@@ -28,7 +28,8 @@ body {
     left: 0;
     margin: 0;
     background-image: url('/img/loginBackground.png');
-    //filter: blur(10px);
+    filter: blur(10px);
+    transform: scale(1.1); 
     height: 100%; /* increases the size of the background image */
     width: 100%;
     z-index: -1; /* the z-index allows the buttons to be placed on top of the background image */
@@ -38,4 +39,34 @@ body {
 
 .login_content {
     display: flex;
+}
+
+.login_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+$ubuntu: 'Ubuntu', sans-serif;
+$loginInputWidth: 242px;
+$loginInputHeight: 46px;
+$loginInputTextColor: rgba(165, 165, 165, 1);
+$loginInputSize: 24px;
+$loginBorderColor: rgba(9, 215, 202, 0.8);
+
+.login_input {
+    font-family: $ubuntu;
+    color: $loginInputTextColor;
+    font-size: $loginInputSize;
+    width: $loginInputWidth;
+    height: $loginInputHeight;
+    background: transparent;
+    border: none;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid $loginBorderColor;
 }

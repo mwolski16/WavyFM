@@ -17,13 +17,24 @@ export default function LoginPage() {
 }
 
 function Login() {
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log(e);
+    }
+
     return (
         <div className='login_div'>
             <div className="login_content">
-                <div className="login_inputs">
-                    <Input></Input>
-                    <Input></Input>
-                </div>
+                <form className="login_inputs" onSubmit={(e) => {handleSubmit(e)}}>
+                    <Input
+                        cssClasses={['login_input']}
+                        placeHolderText='Username'
+                    ></Input>
+                    <Input cssClasses={['login_input']}
+                        placeHolderText='Password'
+                    ></Input>
+                    <button type='submit'>Submit</button>
+                </form>
                 <div>  
                     <div className='login_blur'>
                         <div className='login_backgroundImage'></div>

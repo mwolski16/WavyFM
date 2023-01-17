@@ -1,11 +1,19 @@
 'use client';
 import React from 'react'
 
-export default function Input() {
+interface InputProps {
+  cssClasses?: string[],
+  placeHolderText?: string
+}
+
+export default function Input({cssClasses = [], placeHolderText = ''} : InputProps) {
+
+  function setCSSClasses() {
+    return cssClasses.join(' ')
+  }
+
+
   return (
-    <form>
-    <input></input>
-    </form>
-    
+      <input className={setCSSClasses()} placeholder={placeHolderText}></input>
   )
 }
