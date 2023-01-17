@@ -12,9 +12,7 @@ export default function LoginPage() {
     const [isLoginVisible, setIsLoginVisible] = useState(true);
 
     return (
-        <div>
             <Login></Login>
-        </div>
     );
 }
 
@@ -28,7 +26,7 @@ function Login() {
                 </div>
                 <div>  
                     <div className='login_blur'>
-                        <img className='login_backgroundImage'></img>
+                        <div className='login_backgroundImage'></div>
                     </div>
                 </div>
             </div>
