@@ -9,17 +9,23 @@ body {
     height: 100vh;
 }
 .login_div {
+    position: absolute;
     overflow: hidden;
-    background-color: black;
     height: 100%;
     width: 100%;
 }
 
 .login_backgroundImage {
+    position: absolute;
     margin: 0;
     background-image: url('/img/loginBackground.png');
     filter: blur(10px);
-    height: 100vh;
-    width: 100vw;
+    height: 110vh;
+    width: 110vw;
     overflow: hidden;
+    z-index: -1;
+}
+
+.login_content {
+    display: flex;
 }
