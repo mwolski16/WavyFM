@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.login_div {
+    position: relative; 
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.login_blur{
+    width: 100%;
+    height: 100%;
+}
+
+.login_backgroundImage {
+    position: absolute;
+    top: 0; /* these properties are optional, but they will fix the background image to the top-left corner of the .login_div */
+    left: 0;
+    margin: 0;
+    background-image: url('/img/loginBackground.png');
+    filter: blur(10px);
+    transform: scale(1.1); 
+    height: 100%; /* increases the size of the background image */
+    width: 100%;
+    z-index: -1; /* the z-index allows the buttons to be placed on top of the background image */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login_content {
+    display: flex;
+}
+
+.login_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+$ubuntu: 'Ubuntu', sans-serif;
+$loginInputWidth: 242px;
+$loginInputHeight: 46px;
+$loginInputTextColor: rgba(165, 165, 165, 1);
+$loginInputSize: 24px;
+$loginBorderColor: rgba(9, 215, 202, 0.8);
+
+.login_input {
+    font-family: $ubuntu;
+    color: $loginInputTextColor;
+    font-size: $loginInputSize;
+    width: $loginInputWidth;
+    height: $loginInputHeight;
+    background: transparent;
+    border: none;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid $loginBorderColor;
+}
