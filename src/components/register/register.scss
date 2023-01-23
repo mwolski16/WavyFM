@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.register_div {
+    position: relative; 
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.register_blur{
+    width: 100%;
+    height: 100%;
+}
+
+.register_backgroundImage {
+    position: absolute;
+    top: 0; /* these properties are optional, but they will fix the background image to the top-left corner of the .register_div */
+    left: 0;
+    margin: 0;
+    background-image: url('/public/img/loginBackground.png');
+    filter: blur(10px);
+    transform: scale(1.1); 
+    height: 100%; /* increases the size of the background image */
+    width: 100%;
+    z-index: -1; /* the z-index allows the buttons to be placed on top of the background image */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.register_content {
+    display: flex;
+}
+
+.register_inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+$ubuntu: 'Ubuntu', sans-serif;
+$registerInputWidth: 242px;
+$registerInputHeight: 46px;
+$registerInputTextColor: rgba(165, 165, 165, 1);
+$registerInputSize: 24px;
+$registerBorderColor: rgba(9, 215, 202, 0.8);
+
+.register_input {
+    font-family: $ubuntu;
+    color: $registerInputTextColor;
+    font-size: $registerInputSize;
+    width: $registerInputWidth;
+    height: $registerInputHeight;
+    background: transparent;
+    border: none;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid $registerBorderColor;
+}

@@ -5,7 +5,7 @@ interface InputProps {
   placeHolderText?: string
 }
 
-export default function Input({cssClasses = [], placeHolderText = ''} : InputProps) {
+export default function Input({ cssClasses = [], placeHolderText = ''} : InputProps) {
 
   function setCSSClasses() {
     return cssClasses.join(' ')
