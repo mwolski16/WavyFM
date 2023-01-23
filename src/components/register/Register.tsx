@@ -9,7 +9,7 @@ interface userData {
   email: string;
   emailVisibility: boolean;
   password: string;
-  confirmPassword: string;
+  passwordConfirm: string;
 }
 
 export default function Register() {
@@ -20,9 +20,16 @@ export default function Register() {
     async function handleSubmit(e: any) {
         e.preventDefault();
         const pb = new PocketBase('http://127.0.0.1:8090');
-
-
-      
+        const data: userData = {
+          username: usernameInput,
+          email: "123@gmail.com",
+          emailVisibility: true,
+          password: passwordInput,
+          passwordConfirm: passwordInput,
+        }
+        const record = await pb.collection('users').create(data);
+        console.log(record);
+       
     }
 
   return (
@@ -32,10 +39,12 @@ export default function Register() {
                 <Input
                     cssClasses={['register_input']}
                     placeHolderText='Username'
+                    onChangeFunction={(e) => {setUsernameInput(e.target.value)}}
                 ></Input>
                 <Input 
                     cssClasses={['register_input']}
                     placeHolderText='Password'
+                    onChangeFunction={(e) => {setPasswordInput(e.target.value)}}
                 ></Input>
                 <button type='submit'>Submit</button>
             </form>
