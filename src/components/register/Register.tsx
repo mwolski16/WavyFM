@@ -13,7 +13,7 @@ interface userData {
 }
 
 export default function Register() {
-  const [usernameInput, setUsernameInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
     
     const navigate = useNavigate();
@@ -21,8 +21,8 @@ export default function Register() {
         e.preventDefault();
         const pb = new PocketBase('http://127.0.0.1:8090');
         const data: userData = {
-          username: usernameInput,
-          email: "123@gmail.com",
+          username: (Math.random()*1000).toString(),
+          email: emailInput,
           emailVisibility: true,
           password: passwordInput,
           passwordConfirm: passwordInput,
@@ -38,8 +38,8 @@ export default function Register() {
             <form className="register_inputs" onSubmit={(e) => {handleSubmit(e)}}>
                 <Input
                     cssClasses={['register_input']}
-                    placeHolderText='Username'
-                    onChangeFunction={(e) => {setUsernameInput(e.target.value)}}
+                    placeHolderText='Email'
+                    onChangeFunction={(e) => {setEmailInput(e.target.value)}}
                 ></Input>
                 <Input 
                     cssClasses={['register_input']}

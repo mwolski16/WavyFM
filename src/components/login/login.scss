@@ -24,15 +24,15 @@ body {
 
 .login_backgroundImage {
     position: absolute;
-    top: 0; /* these properties are optional, but they will fix the background image to the top-left corner of the .login_div */
+    top: 0; 
     left: 0;
     margin: 0;
     background-image: url('/img/loginBackground.png');
     filter: blur(10px);
     transform: scale(1.1); 
-    height: 100%; /* increases the size of the background image */
+    height: 100%; 
     width: 100%;
-    z-index: -1; /* the z-index allows the buttons to be placed on top of the background image */
+    z-index: -1; 
     background-position: center;
     background-repeat: no-repeat;
 }
