@@ -8,7 +8,9 @@ $mainBackgroundColor: #17131C;
 
 .main {
     height: 100vh;
-    width: 100vw;
+    max-width:100%; 
     color:White;
     background-color: $mainBackgroundColor;
+    display: flex;
+    flex-direction: column;
 }
