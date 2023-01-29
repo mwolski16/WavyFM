@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import mockItems from '../../mockItems.json';
 import './trendingAlbums.scss';
+import '../mainApp.scss';
 
 
 function TrendingAlbums() {
 
-    const [token, setToken] = useState('');
+  const [token, setToken] = useState('');
  
 
   const [trendingAlbums, setTrendingAlbums] = useState([]);
@@ -70,11 +71,11 @@ function TrendingAlbums() {
    // console.log(trendingAlbums.map((album: any) => album.name))
  
   return (
-    <div className='trendingAlbums_main'>
-        <div className='trendingAlbums_text'>Trending</div>
-        <div className='trendingAlbums_coverScroll'>
+    <div className='genres_main'>
+        <div className='genres_text'>Trending</div>
+        <div className='genres_coverScroll'>
             {getAlbumArt(mockItems).map((albumCoverUrl: string, index: number) => {
-            return <img className='trendingAlbums_cover' key={index} src={albumCoverUrl}></img>
+            return <img className='genres_cover' key={index} src={albumCoverUrl}></img>
             })}
         </div>
        

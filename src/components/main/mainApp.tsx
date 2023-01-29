@@ -6,6 +6,8 @@ import NewReleases from './newreleases/NewReleases';
 
 import TrendingAlbums from './trendingalbums/TrendingAlbums';
 
+import mockGenres from '../mockGenres.json';
+
 
 function MainApp() {
   const location = useLocation();
@@ -13,12 +15,22 @@ function MainApp() {
   
  // const [isAdmin, setIsAdmin] = useState(isAdminLoggedIn);
   
+  function getGenres(items: any) {
+    let genresArray = items.map((item: any) => {
+      return item.name;
+  });
+
+    return genresArray;
+  }
 
     return ( 
       <div className='main'>
         <TrendingAlbums></TrendingAlbums>
         <NewReleases></NewReleases>
-        <GenrePanel></GenrePanel>
+        {getGenres(mockGenres).map((genre: string, index: number) => {
+          return <GenrePanel key={index} genre={genre}></GenrePanel>
+        })
+        }
       </div>
   )
 }

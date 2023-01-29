@@ -14,3 +14,28 @@ $mainBackgroundColor: #17131C;
     display: flex;
     flex-direction: column;
 }
+
+
+.genres_main {
+    height: 21.75%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.genres_text {
+    margin: 0 0 10px 0;
+}
+
+.genres_coverScroll {
+    display: flex;
+    height: 80%;
+    scrollbar-color: transparent transparent;
+    overflow-x: scroll;
+    gap: 20px;
+}
+
+.genres_cover {
+    height: 90px;
+    border-radius: 6px;
+}
