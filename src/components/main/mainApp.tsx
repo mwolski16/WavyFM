@@ -11,6 +11,7 @@ import ButtonWithImage from '../generic/ButtonWithImage';
 import SettingsGear from './settingspanel/SettingsGear';
 import { useNavigate } from "react-router-dom";
 import NavBar from '../generic/NavBar';
+import ProfilePicture from './profilepanel/ProfilePicture';
 
 
 function MainApp() {
@@ -34,7 +35,10 @@ function MainApp() {
            <NavBar></NavBar>
         </div>
         <div>
-          <SettingsGear onClick={() => { navigate('/settings', {replace: true})}}></SettingsGear>
+          <SettingsGear></SettingsGear>
+          <ProfilePicture></ProfilePicture>
+        </div>
+        <div>
         </div>
         <TrendingAlbums></TrendingAlbums>
         <NewReleases></NewReleases>

@@ -2,8 +2,7 @@ import React from 'react'
 import NavBar from '../../generic/NavBar'
 import '../MainApp.scss'
 
-
-function SearchPanel() {
+function ProfilePanel() {
   return (
     <div>
         <div className="navbar">
@@ -13,4 +12,4 @@ function SearchPanel() {
   )
 }
 
-export default SearchPanel
+export default ProfilePanel

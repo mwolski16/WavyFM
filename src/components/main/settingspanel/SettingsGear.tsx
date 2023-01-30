@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import ButtonWithImage from '../../generic/ButtonWithImage';
 import './SettingsGear.scss'
 
-interface SettingsGearProps {
-    onClick?: any;
-}
 
-function SettingsGear({onClick}: SettingsGearProps) {
+function SettingsGear() {
+
+  const navigate = useNavigate();
 
   return (
     <div>
-        <ButtonWithImage svgName='gear.svg' cssClasses={['main_settings', 'settingsBtn']} onClick={onClick}></ButtonWithImage>
+        <ButtonWithImage svgName='gear.svg' cssClasses={['main_settings', 'settingsBtn']} onClick={() => { navigate('/settings', {replace: true})}}></ButtonWithImage>
    </div>
     
   )

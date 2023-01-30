@@ -2,16 +2,18 @@ import React from 'react'
 
 interface ButtonProps {
   cssClasses?: string[],
-  value?: string
+  text?: string
   onClick?: (e: any) => void
+  type: 'button' | 'submit' | 'reset';
+  isDisabled?: boolean;
 }
-export default function Button({onClick, cssClasses = [], value} : ButtonProps) {
+export default function Button({onClick, cssClasses = [], text, type, isDisabled} : ButtonProps) {
   function setCSSClasses() {
     return cssClasses.join(' ')
   }
 
 
   return (
-    <button className={setCSSClasses()} onClick={onClick}>{value}</button>
+    <button type={type} className={setCSSClasses()} onClick={onClick} disabled={isDisabled ? true : false}>{text}</button>
   )
 }
