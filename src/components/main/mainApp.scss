@@ -4,10 +4,44 @@
     box-sizing: border-box;
 }
 
+.disabled {
+    pointer-events: none;
+    display: none;
+}
+
+.disableScroll {
+    overflow-y: hidden;
+    pointer-events: none !important;
+}
+
+.navbar {
+    height: 8%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background-color: #231932;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.navbar_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
 $mainBackgroundColor: #17131C;
 
 .main {
-    height: 100vh;
+    height: 100%;
     max-width:100%; 
     color:White;
     background-color: $mainBackgroundColor;
@@ -15,6 +49,10 @@ $mainBackgroundColor: #17131C;
     flex-direction: column;
 }
 
+.main_settings {
+    width: 40px;
+    height: 40px;
+}
 
 .genres_main {
     height: 21.75%;
@@ -39,6 +77,7 @@ $mainBackgroundColor: #17131C;
     height: 100%;
     scrollbar-color: transparent transparent;
     overflow-x: scroll;
+    overflow-y: hidden;
     gap: 20px;
     -ms-overflow-style: none;
     scrollbar-width: none;
