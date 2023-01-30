@@ -1,7 +1,17 @@
 import React from 'react'
 
-export default function Button() {
+interface ButtonProps {
+  cssClasses?: string[],
+  value?: string
+  onClick?: (e: any) => void
+}
+export default function Button({onClick, cssClasses = [], value} : ButtonProps) {
+  function setCSSClasses() {
+    return cssClasses.join(' ')
+  }
+
+
   return (
-    <button>budsdsadsasdatton</button>
+    <button className={setCSSClasses()} onClick={onClick}>{value}</button>
   )
 }
