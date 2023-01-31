@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../generic/Button'
 import Input from '../../generic/Input'
 
-function ChangeUsernameModal({toggleModal}) {
+function ChangeUsernameModal({toggleModal}: any) {
     const [newUsername, setNewUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 

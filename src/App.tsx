@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom'
 import './App.css'
 import Login from './components/login/Login'
 import LibraryPanel from './components/main/librarypanel/LibraryPanel'
@@ -6,11 +6,11 @@ import MainApp from './components/main/MainApp'
 import ProfilePanel from './components/main/profilepanel/ProfilePanel'
 import SearchPanel from './components/main/searchpanel/SearchPanel'
 import SettingsPanel from './components/main/settingspanel/SettingsPanel'
+import SongPanel from './components/main/songpanel/SongPanel'
 import Register from './components/register/Register'
 
 function App() {
  
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -22,6 +22,8 @@ function App() {
           <Route path="/search" element={<SearchPanel/>}/>
           <Route path="/library" element={<LibraryPanel/>}/>
           <Route path="/profile" element={<ProfilePanel/>}/>
+          <Route path="/music" element={<SongPanel/>}/>
+          
         </Routes>
       </BrowserRouter>
     </div>

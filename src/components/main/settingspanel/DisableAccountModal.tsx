@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../../generic/Button'
 
-function DisableAccountModal({toggleModal}) {
+function DisableAccountModal({toggleModal}: any) {
 
     const [checkboxChecked, setCheckboxChecked] = useState(false);
 
