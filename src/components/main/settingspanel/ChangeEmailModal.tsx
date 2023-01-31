@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from '../../generic/Button';
 import Input from '../../generic/Input';
 
-function ChangeEmailModal() {
+function ChangeEmailModal({toggleModal}) {
 
     const [currentEmail, setCurrentEmail] = useState('');
     const [newEmail, setNewEmail] = useState('');
@@ -15,23 +15,26 @@ function ChangeEmailModal() {
     }
 
   return (
-    <div>
-        <form onSubmit={(e) => {changeEmail(e)}}>
-            <div>Enter current e-mail:</div>
-            <Input placeHolderText='current e-mail'
-             onChangeFunction={(e) => {setCurrentEmail(e.target.value)}}
-             ></Input>
-            <div>Enter new e-mail:</div>
-            <Input placeHolderText='new e-mail'
-             onChangeFunction={(e) => {setNewEmail(e.target.value)}}
-             ></Input>
-            <div>Enter your password:</div>
-            <Input placeHolderText='password'
-            onChangeFunction={(e) => {setPassword(e.target.value)}}
-            ></Input>
-            <Button text='confirm' type="submit"></Button>
-            <Button text='cancel' type="button"></Button>
-        </form>
+    <div className="settingsModal">
+        <div className="modalWrapper changeEmailModal">
+            <div className="modalTitle">Change e-mail</div>
+            <form onSubmit={(e) => {changeEmail(e)}}>
+                <div>Enter current e-mail:</div>
+                <Input placeHolderText='current e-mail' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setCurrentEmail(e.target.value)}}
+                 ></Input>
+                <div>Enter new e-mail:</div>
+                <Input placeHolderText='new e-mail' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setNewEmail(e.target.value)}}
+                 ></Input>
+                <div>Enter your password:</div>
+                <Input placeHolderText='password' cssClasses={['modal_input']}
+                onChangeFunction={(e) => {setPassword(e.target.value)}}
+                ></Input>
+                <Button cssClasses={["settingsScreenBtn mediumBtn confirmBtn"]} text='Confirm' type="submit"/>
+                <Button cssClasses={["settingsScreenBtn mediumBtn cancelBtn"]} text='Cancel' type="button" onClick={toggleModal}/>
+            </form>
+        </div>
     </div>
   )
 }

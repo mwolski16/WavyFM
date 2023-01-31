@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../generic/Button'
 import Input from '../../generic/Input'
 
-function ChangePasswordModal() {
+function ChangePasswordModal({toggleModal}) {
 
     const [currentPassword, setCurrentPassword] = React.useState('');
     const [newPassword, setNewPassword] = React.useState('');
@@ -27,23 +27,26 @@ function ChangePasswordModal() {
         }
     }
   return (
-    <div>
-        <form onSubmit={(e) => {changePassword(e)}}>
-            <div>Change password</div>
-            <Input placeHolderText='current password'
-             onChangeFunction={(e) => {setCurrentPassword(e.target.value)}}
-             ></Input>
-            <div>Enter new password</div>
-            <Input placeHolderText='new password'
-             onChangeFunction={(e) => {setNewPassword(e.target.value)}}
-             ></Input>
-            <div>Re-enter new password</div>
-            <Input placeHolderText='new password'
-            onChangeFunction={(e) => {setReEnterPassword(e.target.value)}}
-            ></Input>
-            <Button text='confirm' type="submit"></Button>
-            <Button text='cancel' type="button"></Button>
-        </form>
+    <div className="settingsModal">
+        <div className="modalWrapper changePasswordModal">
+            <div className="modalTitle">Change password</div>
+            <form onSubmit={(e) => {changePassword(e)}}>
+                <div>Enter current password:</div>
+                <Input placeHolderText='current password' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setCurrentPassword(e.target.value)}}
+                 ></Input>
+                <div>Enter new password</div>
+                <Input placeHolderText='new password' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setNewPassword(e.target.value)}}
+                 ></Input>
+                <div>Re-enter new password</div>
+                <Input placeHolderText='new password' cssClasses={['modal_input']}
+                onChangeFunction={(e) => {setReEnterPassword(e.target.value)}}
+                ></Input>
+                <Button cssClasses={["settingsScreenBtn mediumBtn confirmBtn"]} text='Confirm' type="submit"/>
+                <Button cssClasses={["settingsScreenBtn mediumBtn cancelBtn"]} text='Cancel' type="button" onClick={toggleModal}/>
+            </form>
+        </div>
     </div>
   )
 }

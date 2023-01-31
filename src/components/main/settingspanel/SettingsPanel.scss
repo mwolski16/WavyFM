@@ -1,0 +1,202 @@
+.settingsPanel {
+  .settingsPanelProfileWrapper {
+    height: 45px;
+    display: flex;
+    gap: 10px;
+    margin-left: 25px;
+    margin-top: 26px;
+
+    .profilePicture {
+      background-color: inherit;
+      border: none;
+    }
+
+    .settingsPanelViewProfileWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .settingsPanelUsername, .settingsPanelView {
+        font-family: 'Ubuntu', sans-serif;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 18px;
+      }
+
+      .settingsPanelUsername {
+        color: rgba(131, 101, 253, 0.9);
+        font-weight: 700;
+        opacity: 0.9;
+        letter-spacing: 0.06em;
+      }
+
+      .settingsPanelView {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 300;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .settingsPanelProfileDetailsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 25px;
+    .settingsPanelProfileInfo {
+      display: flex;
+      gap: 5px;
+
+      span {
+        font-family: 'Ubuntu', sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        color: rgba(255, 255, 255, 0.9);
+        opacity: 0.8;
+      }
+
+      .profileInfoTitle {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        color: rgba(131, 101, 253, 0.9);
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .settingsPanelManageAccountWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 37px;
+  }
+
+  .settingsPanelAppVersionWrapper {
+    margin-left: 25px;
+    margin-top: 110px;
+    display: flex;
+    gap: 5px;
+
+    span {
+      font-family: 'Ubuntu',sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 15px;
+      color: rgba(255, 255, 255, 0.8);
+      opacity: 0.8;
+    }
+  }
+
+  .vectorLine {
+    margin: 25px auto 16px;
+    height: 1px;
+    width: 290px;
+    background: #A2A7D2;
+    opacity: 0.8;
+    border-radius: 12px;
+  }
+}
+
+.settingsModal {
+ z-index: 5;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modalWrapper {
+    box-sizing: border-box;
+    background: #231932;
+    border: 1px solid rgba(131, 101, 253, 0.9);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .modalTitle {
+      font-family: 'Ubuntu', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      text-align: center;
+      font-size: 20px;
+      line-height: 23px;
+      color: rgba(255, 255, 255, 0.9);
+      opacity: 0.9;
+      margin-top: 25px;
+      margin-bottom: 29px;
+      width: 90%;
+    }
+
+    &.changePasswordModal, &.changeEmailModal {
+      width: 320px;
+      height: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.changeUsernameModal {
+      width: 320px;
+      height: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.logoutModal {
+      width: 320px;
+      height: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.disableAccountModal {
+      width: 320px;
+      height: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .modal_input {
+      font-family: 'Ubuntu', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 21px;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.9);
+      opacity: 0.7;
+      width: 240px;
+      height: 40px;
+      background: transparent;
+      text-align: center;
+      border: none;
+      border-bottom: 2px solid rgba(127, 95, 255, 0.8);
+    }
+
+    button {
+      margin-bottom: 16px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      div {
+        font-family: 'Ubuntu', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        color: rgba(255, 255, 255, 0.9);
+        opacity: 0.8;
+      }
+    }
+  }
+}

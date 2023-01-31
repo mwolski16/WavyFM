@@ -11,6 +11,7 @@ import ChangeEmailModal from './ChangeEmailModal'
 import "../mainApp.scss"
 import LogoutModal from './LogoutModal'
 import DisableAccountModal from './DisableAccountModal'
+import SettingsGear from "./SettingsGear";
 
 function SettingsPanel() {
 
@@ -21,43 +22,62 @@ function SettingsPanel() {
     const [disableAccount, setDisableAccount] = useState(false);
 
   return (
-    <div>
-        <div>
-            <div className={changeUsername ? "" : "disabled"}>
-                <ChangeUsernameModal></ChangeUsernameModal>
-            </div>
-            <div className={changePassword ? "" : "disabled"}>
-                <ChangePasswordModal></ChangePasswordModal>
-            </div>
-            <div className={changeEmail ? "" : "disabled"}>
-                <ChangeEmailModal></ChangeEmailModal>
-            </div>
-            <div className={logout ? "" : "disabled"}>
-                <LogoutModal></LogoutModal>
-            </div>
-            <div className={disableAccount ? "" : "disabled"}>
-                <DisableAccountModal></DisableAccountModal>
-            </div>
-        </div>
-        <div className="navbar">
-            <NavBar></NavBar>
-        </div>
-        <div>
+    <div className="main">
+        <div className="settingsPanel">
             <div>
-                <ProfilePicture></ProfilePicture>
+                <div className={changePassword ? "" : "disabled"}>
+                    <ChangePasswordModal toggleModal={() => {setChangePassword(!changePassword)}}></ChangePasswordModal>
+                </div>
+                <div className={changeEmail ? "" : "disabled"}>
+                    <ChangeEmailModal toggleModal={() => {setChangeEmail(!changeEmail)}}></ChangeEmailModal>
+                </div>
+                <div className={changeUsername ? "" : "disabled"}>
+                    <ChangeUsernameModal toggleModal={() => {setChangeUsername(!changeUsername)}}></ChangeUsernameModal>
+                </div>
+                <div className={logout ? "" : "disabled"}>
+                    <LogoutModal toggleModal={() => {setLogout(!logout)}}></LogoutModal>
+                </div>
+                <div className={disableAccount ? "" : "disabled"}>
+                    <DisableAccountModal toggleModal={() => {setDisableAccount(!disableAccount)}}></DisableAccountModal>
+                </div>
             </div>
             <div>
-                <Input></Input>
-                <Input></Input>
+                <h1 className="panelHeader">Settings</h1>
+                <div className="settingsPanelProfileWrapper">
+                    <ProfilePicture imgSize="45px"></ProfilePicture>
+                    <div className="settingsPanelViewProfileWrapper">
+                        <span className="settingsPanelUsername">[username]</span>
+                        <span className="settingsPanelView">View profile</span>
+                    </div>
+                </div>
+                <div className="vectorLine"/>
+                <div className="settingsPanelProfileDetailsWrapper">
+                    <div className="settingsPanelProfileInfo">
+                        <span className="profileInfoTitle">E-mail:</span>
+                        <span>[e-mail]</span>
+                    </div>
+                    <div className="settingsPanelProfileInfo">
+                        <span className="profileInfoTitle">Username:</span>
+                        <span>[username]</span>
+                    </div>
+                </div>
+                <div className="vectorLine"/>
+                <div className="settingsPanelManageAccountWrapper">
+                    <Button type="button" text="Reset Password" cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]} onClick={() => {setChangePassword(!changePassword)}}></Button>
+                    <Button type="button" text="Change e-mail" cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]} onClick={() => {setChangeEmail(!changeEmail)}}></Button>
+                    <Button type="button" text="Change username" cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]} onClick={() => {setChangeUsername(!changeUsername)}}></Button>
+                </div>
+                <div className="settingsPanelManageAccountWrapper">
+                    <Button type="button" text="Log out" cssClasses={["settingsScreenBtn mediumBtn logoutBtn"]} onClick={() => {setLogout(!logout)}} ></Button>
+                    <Button type="button" text="Disable Account" cssClasses={["settingsScreenBtn mediumBtn disableAccountBtn"]} onClick={() => {setDisableAccount(!disableAccount)}} ></Button>
+                </div>
+                <div className="settingsPanelAppVersionWrapper">
+                    <span>App version</span>
+                    <span>[appVersion]</span>
+                </div>
             </div>
-            <div>
-                <Button type="button" text="Reset Password" onClick={() => {setChangePassword(!changePassword)}}></Button>
-                <Button type="button" text="Change e-mail" onClick={() => {setChangeEmail(!changeEmail)}}></Button>
-                <Button type="button" text="Change username" onClick={() => {setChangeUsername(!changeUsername)}}></Button>
-            </div>
-            <div>
-                <Button type="button" text="Log out" onClick={() => {setLogout(!logout)}} ></Button>
-                <Button type="button" text="Disable Account" onClick={() => {setDisableAccount(!disableAccount)}} ></Button>
+            <div className="navbar">
+                <NavBar></NavBar>
             </div>
         </div>
     </div>

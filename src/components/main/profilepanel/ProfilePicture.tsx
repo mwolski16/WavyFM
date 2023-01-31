@@ -2,7 +2,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ButtonWithImage from '../../generic/ButtonWithImage'
 
-function ProfilePicture() {
+interface PictureProps {
+    imgSize?: string
+}
+function ProfilePicture({imgSize} : PictureProps) {
 
     const navigate = useNavigate();
 
@@ -10,9 +13,7 @@ function ProfilePicture() {
         return 'logo.png'
     }
   return (
-    <div>
-        <ButtonWithImage imgName={getProfilePicture()} onClick={() => {navigate('/settings', {replace: true})}}></ButtonWithImage>
-   </div>
+        <ButtonWithImage imgName={getProfilePicture()} cssClasses={['main_settings', 'profilePicture']} onClick={() => {navigate('/settings', {replace: true})}} imgSize={imgSize}></ButtonWithImage>
   )
 }
 

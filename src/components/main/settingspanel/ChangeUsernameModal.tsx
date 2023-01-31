@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../generic/Button'
 import Input from '../../generic/Input'
 
-function ChangeUsernameModal() {
+function ChangeUsernameModal({toggleModal}) {
     const [newUsername, setNewUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -13,19 +13,22 @@ function ChangeUsernameModal() {
     }
 
   return (
-    <div>
-         <form onSubmit={(e) => {changeUsername(e)}}>
-            <div>Change username</div>
-            <Input placeHolderText='Enter new username'
-             onChangeFunction={(e) => {setNewUsername(e.target.value)}}
-             ></Input>
-            <div>Enter new password</div>
-            <Input placeHolderText='Enter your password'
-             onChangeFunction={(e) => {setPassword(e.target.value)}}
-             ></Input>
-            <Button text='confirm' type="submit"></Button>
-            <Button text='cancel' type="button"></Button>
-        </form>
+    <div className="settingsModal">
+        <div className="modalWrapper changeUsernameModal">
+            <div className="modalTitle">Change username</div>
+             <form onSubmit={(e) => {changeUsername(e)}}>
+                 <div>Enter new username</div>
+                <Input placeHolderText='Enter new username' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setNewUsername(e.target.value)}}
+                 ></Input>
+                <div>Enter your password</div>
+                <Input placeHolderText='Enter your password' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setPassword(e.target.value)}}
+                 ></Input>
+                <Button cssClasses={["settingsScreenBtn mediumBtn confirmBtn"]} text='Confirm' type="submit"/>
+                <Button cssClasses={["settingsScreenBtn mediumBtn cancelBtn"]} text='Cancel' type="button" onClick={toggleModal}/>
+            </form>
+        </div>
     </div>
   )
 }

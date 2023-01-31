@@ -10,7 +10,7 @@ function SettingsGear() {
 
   return (
     <div>
-        <ButtonWithImage svgName='gear.svg' cssClasses={['main_settings', 'settingsBtn']} onClick={() => { navigate('/settings', {replace: true})}}></ButtonWithImage>
+        <ButtonWithImage svgName='gear.svg' cssClasses={['main_settings', 'settingsBtn']} onClick={() => { navigate('/settings', {replace: true})}} imgSize='40px'></ButtonWithImage>
    </div>
     
   )

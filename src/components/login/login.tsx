@@ -1,6 +1,6 @@
 
 import "./login.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "../generic/Button";
 import Input from "../generic/Input";
 import PocketBase from 'pocketbase';
@@ -44,24 +44,36 @@ export default function Login() {
 
     return (
         <div className='login_div'>
+            <h1>LOGIN</h1>
             <div className="login_content">
                 <form className="login_inputs" onSubmit={(e) => {handleSubmit(e)}}>
                     <Input
                         cssClasses={['login_input']}
-                        placeHolderText='Username'
+                        placeHolderText='username'
                         onChangeFunction={(e) => {setUsernameInput(e.target.value)}}
                     ></Input>
                     <Input cssClasses={['login_input']}
-                        placeHolderText='Password'
+                        placeHolderText='password'
                         onChangeFunction={(e) => {setPasswordInput(e.target.value)}}
                     ></Input>
-                    <button type='submit'>Submit</button>
+                    <Button
+                        cssClasses={["welcomeScreenBtn bigBtn loginBtn"]}
+                        value='Login'
+                        onClick={(e) => {return;}}/>
                 </form>
                 <div>  
                     <div className='login_blur'>
                         <div className='login_backgroundImage'></div>
                     </div>
                 </div>
+            </div>
+            <a role="button">Forgot password?</a>
+            <div className="login_bottomWrapper">
+                <span className="login_bottomNote">Already have an account?</span>
+                <Button
+                    cssClasses={["welcomeScreenBtn smallBtn signUpBtn"]}
+                    value='Sign up'
+                    onClick={(e) => {return;}}/>
             </div>
         </div>
     );
