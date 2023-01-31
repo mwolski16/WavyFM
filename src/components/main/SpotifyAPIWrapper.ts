@@ -34,3 +34,61 @@ export async function searchSpotify(query: string) {
     })
     return searchResult;
 }
+
+export async function getTrendingAlbums() {
+  const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
+  const searchParameters: any = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${encodedToken}`
+    }
+  }
+
+  const searchResult = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=PL&locale=pl_PL&limit=10', searchParameters)
+  .then((result) => result.json())
+  .then((data) => {
+    return data;
+  })
+  return searchResult;
+}
+
+export async function getNewReleases() {
+
+  const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
+  const searchParameters: any = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${encodedToken}`
+    }
+  }
+
+  const searchResult = await fetch('https://api.spotify.com/v1/browse/new-releases?country=PL&limit=10', searchParameters)
+  .then((result) => result.json())
+  .then((data) => {
+    return data;
+  })
+  return searchResult;
+
+}
+
+export async function getGenreAlbums(genre: string) {
+  
+  const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
+  const searchParameters: any = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${encodedToken}`
+    }
+  }
+
+  const searchResult = await fetch(`https://api.spotify.com/v1/browse/categories/${genre.toLowerCase()}/playlists?country=PL&limit=10`, searchParameters)
+  .then((result) => result.json())
+  .then((data) => {
+    return data;
+  })
+  return searchResult;
+
+}

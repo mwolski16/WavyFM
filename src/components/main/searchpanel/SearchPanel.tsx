@@ -18,7 +18,6 @@ function SearchPanel() {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResultArtist | SearchResultSong | SearchResultAlbum | SearchResultPlaylist>();
   const [queryType, setQueryType] = useState<QueryType>('song');
-  const [startingRadioButtonShouldBeChecked, setStartingRadioButtonShouldBeChecked] = useState(true);
 
   async function searchFunction(e: any) {
     e.preventDefault();

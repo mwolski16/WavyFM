@@ -17,14 +17,13 @@ import ProfilePicture from './profilepanel/ProfilePicture';
 function MainApp() {
   const location = useLocation();
   const navigate = useNavigate();
-  //let isAdminLoggedIn = location?.state.isAdminLoggedIn || false;
-  
- // const [isAdmin, setIsAdmin] = useState(isAdminLoggedIn);
   
   function getGenres(items: any) {
-    let genresArray = items.map((item: any) => {
+    
+    let genresArray = items.slice(2,7).map((item: any) => {
       return item.name;
   });
+  console.log(genresArray);
 
     return genresArray;
   }

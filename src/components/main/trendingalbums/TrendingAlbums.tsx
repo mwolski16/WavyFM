@@ -2,69 +2,27 @@ import React, { useEffect, useState } from 'react'
 import mockItems from '../../mockItems.json';
 import './trendingAlbums.scss';
 import '../mainApp.scss';
-
+import { getTrendingAlbums } from '../SpotifyAPIWrapper';
+import { TrendingAlbumApiHelper } from './TrendingAlbumApiHelper';
 
 function TrendingAlbums() {
 
-  const [token, setToken] = useState('');
- 
+  const [trendingAlbumArt, setTrendingAlbumArt] = useState<string[]>([]);
 
-  const [trendingAlbums, setTrendingAlbums] = useState([]);
+  useEffect(() => {
+    getTrendingAlbumArt();
+  }, []);
+  
 
+    async function getTrendingAlbumArt() {
+      const trendingAlbums = await getTrendingAlbums();
+      const trendingAlbumsArray = new TrendingAlbumApiHelper(trendingAlbums);
+      let albumArtArray: any[] = [];
 
-    function refreshToken() {
-      const authParameters = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'grant_type=client_credentials&client_id=' + import.meta.env.VITE_SPOTIFY_CLIENT_ID + '&client_secret=' + import.meta.env.VITE_SPOTIFY_SECRET
-      }
-      fetch('https://accounts.spotify.com/api/token', authParameters)
-      .then(result => result.json())
-      .then(data => setToken(data.access_token))
-      .catch(error => {
-        console.log(error);
-      });
-}
-
-    async function getTrendingAlbums() {
-
-      const trendingParameters = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-        }
-      };
-
-      //console.log(trendingParameters);
-        
-      const getTrendingAlbums = await fetch('https://api.spotify.com/v1/browse/new-releases?country=US&limit=10', trendingParameters)
-      .then(result => result.json())
-      .then((data) => {
-        setTrendingAlbums(data.items)
-        console.log(data.items)
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-
-    }
-
-    
-    useEffect(() => {
-      //refreshToken();
-      //getTrendingAlbums();
-    },[]);
-
-    function getAlbumArt(items: any) {
-      let albumsArray = items.map((item: any) => {
-        return item.images[0].url;
-    });
-
-      return albumsArray;
+      await trendingAlbumsArray.getItems().map((element: any, index: number) => {
+        albumArtArray.push(trendingAlbumsArray.getPlaylistImage(index));
+    })
+      setTrendingAlbumArt(albumArtArray);
     }
 
 
@@ -74,7 +32,7 @@ function TrendingAlbums() {
     <div className='genres_main'>
         <div className='genres_text'>Trending</div>
         <div className='genres_coverScroll'>
-            {getAlbumArt(mockItems).map((albumCoverUrl: string, index: number) => {
+            {trendingAlbumArt?.map((albumCoverUrl: string, index: number) => {
                 return <div key={index} className='genres_coverGradient'><img className='genres_cover' key={index} src={albumCoverUrl}></img></div>
             })}
         </div>
