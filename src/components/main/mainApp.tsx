@@ -34,11 +34,12 @@ function MainApp() {
         <div className="navbar">
            <NavBar></NavBar>
         </div>
-        <div>
+        <div className="main_headerWrapper">
           <SettingsGear></SettingsGear>
-          <ProfilePicture></ProfilePicture>
+          <ProfilePicture imgSize="45px"/>
         </div>
-        <div>
+        <div className="headerInfo">
+            <span>Welcome, [name]</span>
         </div>
         <TrendingAlbums></TrendingAlbums>
         <NewReleases></NewReleases>

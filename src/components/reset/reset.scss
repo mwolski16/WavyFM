@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+$ubuntu: 'Ubuntu', sans-serif;
+$loginInputWidth: 242px;
+$loginInputHeight: 46px;
+$loginInputTextColor: rgba(165, 165, 165, 1);
+$loginInputSize: 24px;
+$loginBorderColor: rgba(9, 215, 202, 0.8);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.reset_bottomWrapper {
+  margin-top: 166px;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    font-size: 18px;
+    line-height: 21px;
+    font-family: $ubuntu;
+    margin-bottom: 10px;
+  }
+}
+
+.reset_div {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  .bigBtn.loginBtn {
+    margin-top: 20px;
+  }
+
+  h1, h2 {
+    font-family: $ubuntu;
+    font-style: normal;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 42px;
+    line-height: 48px;
+    margin-top: 80px;
+    letter-spacing: 0.12em;
+  }
+
+  h2 {
+    margin-top: 100px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  a {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: $ubuntu;
+    margin-bottom: 10px;
+  }
+}
+
+.reset_blur{
+  width: 100%;
+  height: 100%;
+}
+
+.reset_backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  filter: blur(10px);
+  transform: scale(1.1);
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.reset_content {
+  display: flex;
+}
+
+.reset_inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.reset_input {
+  font-family: $ubuntu;
+  color: $loginInputTextColor;
+  font-size: $loginInputSize;
+  width: $loginInputWidth;
+  height: $loginInputHeight;
+  background: transparent;
+  border: none;
+  text-align: center;
+  border-bottom: 2px solid rgba(185, 124, 32, 0.8);
+}
