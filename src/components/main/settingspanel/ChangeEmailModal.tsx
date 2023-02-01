@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from '../../generic/Button';
 import Input from '../../generic/Input';
 
-function ChangeEmailModal({toggleModal}) {
+function ChangeEmailModal({toggleModal} : {toggleModal:any}) {
 
     const [currentEmail, setCurrentEmail] = useState('');
     const [newEmail, setNewEmail] = useState('');

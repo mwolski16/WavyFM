@@ -17,8 +17,19 @@ body {
     height: 100vh;
 }
 
+.alert {
+    height: 16px;
+    font-family: $ubuntu;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+    color: #d30e0e;
+    margin-top: 15px;
+}
+
 .login_bottomWrapper {
-    margin-top: 170px;
+    margin-top: 160px;
     display: flex;
     flex-direction: column;
 
@@ -102,7 +113,8 @@ body {
 .login_input {
     font-family: $ubuntu;
     color: $loginInputTextColor;
-    font-size: $loginInputSize;
+    font-size: 18px;
+    line-height: 21px;
     width: $loginInputWidth;
     height: $loginInputHeight;
     background: transparent;

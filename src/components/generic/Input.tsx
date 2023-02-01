@@ -4,9 +4,10 @@ interface InputProps {
   cssClasses?: string[],
   placeHolderText?: string
   onChangeFunction?: (e: any) => void
+  type?: string
 }
 
-export default function Input({onChangeFunction, cssClasses = [], placeHolderText = ''} : InputProps) {
+export default function Input({onChangeFunction, cssClasses = [], placeHolderText = '', type} : InputProps) {
 
   function setCSSClasses() {
     return cssClasses.join(' ')
@@ -14,6 +15,6 @@ export default function Input({onChangeFunction, cssClasses = [], placeHolderTex
 
 
   return (
-      <input className={setCSSClasses()} placeholder={placeHolderText} onChange={onChangeFunction}></input>
+      <input className={setCSSClasses()} placeholder={placeHolderText} onChange={onChangeFunction} type={type}></input>
   )
 }

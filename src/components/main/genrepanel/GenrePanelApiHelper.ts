@@ -3,8 +3,10 @@ export class GenrePanelApiHelper  {
     private items: any;
 
    public constructor(searchResult: any) {
-        this.items = searchResult.playlists.items;
-    }
+       if (searchResult.playlists !== undefined) {
+           this.items = searchResult.playlists.items;
+       }
+   }
     private checkIfItemsIsNull() {
         if (this.items.length === 0) {
            return true;

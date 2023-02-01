@@ -73,7 +73,7 @@ function SearchPanel() {
     }
   }
 
-  // @Konrad - tutaj css trzeba poprawic cn 
+
   return (
     <div className="main">
         <div className="searchPanel">
@@ -83,11 +83,25 @@ function SearchPanel() {
                 <form onSubmit={(e) => {searchFunction(e)}}>
                   <img className="searchIcon" src="src/components/icons/svg/loopa.svg" />
                   <Input cssClasses={["searchbar_input"]} placeHolderText="what do you want to find?" onChangeFunction={(e) => {setSearch(e.target.value)}}/>
-                  <input type='radio' name="genre" onClick={() => {setQueryType('song')}}></input>
-                  <input type='radio' name="genre" onClick={() => {setQueryType('album')}}></input>
-                  <input type='radio' name="genre" onClick={() => {setQueryType('artist')}}></input>
-                  <input type='radio' name="genre" onClick={() => {setQueryType('playlist')}}></input>
                 </form>
+              </div>
+              <div className="searchTypeWrapper">
+                <div className={queryType=="song"? "checked" : ""}>
+                  <span>Song</span>
+                  <input type='radio' name="genre"  onClick={() => {setQueryType('song')}}></input>
+                </div>
+                <div className={queryType=="album"? "checked" : ""}>
+                  <span>Album</span>
+                  <input type='radio' name="genre"   onClick={() => {setQueryType('album')}}></input>
+                </div>
+                <div className={queryType=="artist"? "checked" : ""}>
+                  <span>Artist</span>
+                  <input type='radio' name="genre"   onClick={() => {setQueryType('artist')}}></input>
+                </div>
+                <div className={queryType=="playlist"? "checked" : ""}>
+                  <span>Playlist</span>
+                  <input type='radio' name="genre"   onClick={() => {setQueryType('playlist')}}></input>
+                </div>
               </div>
             </div>
             {searchResults?.getItems().length !== 0 ? searchResults?.getItems().map((element: any, index: number) => {

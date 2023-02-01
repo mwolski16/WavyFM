@@ -17,14 +17,14 @@ export class PlaylistHelper  {
      }
      public getPlaylistName() {
         if(this.checkIfItemsIsNull()) {
-            return null;
+            return "";
         }
             return this.items.name;
      }
      
      public getTrackNames() {
         if(this.checkIfItemsIsNull()) {
-            return null;
+            return [];
         }
             let trackNames = [];
             for (let i = 0; i < this.items.tracks.items; i++) {

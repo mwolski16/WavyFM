@@ -9,72 +9,86 @@ export default function ButtonList() {
         <div className="main">
             <Button
                 cssClasses={["welcomeScreenBtn bigBtn signInBtn"]}
-                value='Sign in'
+                text='Sign in'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["welcomeScreenBtn bigBtn signUpBtn"]}
-                value='Sign up'
+                text='Sign up'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["welcomeScreenBtn bigBtn loginBtn"]}
-                value='Login'
+                text='Login'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["welcomeScreenBtn bigBtn resetBtn"]}
-                value='reset'
+                text='reset'
+                type="button"
                 onClick={() => {return;}}/>
 
             <Button
                 cssClasses={["welcomeScreenBtn smallBtn signUpBtn"]}
-                value='Sign up'
+                text='Sign up'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["welcomeScreenBtn smallBtn signInBtn"]}
-                value='Sign in'
+                text='Sign in'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]}
-                value='Reset password'
+                text='Reset password'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]}
-                value='Change e-mail'
+                text='Change e-mail'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]}
-                value='Change username'
+                text='Change username'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn logoutBtn"]}
-                value='Log out'
+                text='Log out'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn disableAccountBtn"]}
-                value='Disable account'
+                text='Disable account'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn confirmBtn"]}
-                value='Confirm'
+                text='Confirm'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn confirmBtn disabledBtn"]}
-                value='Confirm'
+                text='Confirm'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <Button
                 cssClasses={["settingsScreenBtn mediumBtn cancelBtn"]}
-                value='Cancel'
+                text='Cancel'
+                type="button"
                 onClick={(e) => {return;}}/>
 
             <ButtonWithImage

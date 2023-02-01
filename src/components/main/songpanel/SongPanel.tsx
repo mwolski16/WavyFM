@@ -7,6 +7,8 @@ import { AlbumHelper } from './AlbumHelper';
 import { AlbumSong } from './AlbumSong';
 import { PlaylistHelper } from './PlaylistHelper';
 import { PlaylistSong } from './PlaylistSong';
+import ButtonWithImage from "../../generic/ButtonWithImage";
+import AlbumSongCard from "../../generic/AlbumSongCard";
 
 interface SongPanelProps {
   mainTitle: string,
@@ -18,30 +20,68 @@ interface SongPanelProps {
 
 function SongPanel({mainTitle, secondaryTitle, art, tracklist}: SongPanelProps) {
     const location = useLocation();
-   // console.log(location.state.mainTitle, location.state.secondaryTitle, location.state.art, location.state.tracklist)
-  // @Konrad tutaj tez jest css jak cos kc kc 
-    return (
-        <div style={{color: "white"}}>
-            <div>
-                <img style={{ width: "30px"}}src={location.state.art} />
-                <div>{location.state.mainTitle}</div>
-                <div>{location.state.secondaryTitle}</div>
+
+    if (!location.state.tracklist) {
+        return (
+            <div className="main songPanelWrapper">
+                <div className="songPanelDetailsWrapper">
+                    <img src={location.state.art || "src/components/icons/svg/placeholder.svg"} className="songImage"/>
+                    <div className="songPanelTitle">{location.state.mainTitle}</div>
+                    <div className="songPanelAuthor">{location.state.secondaryTitle}</div>
+                    <div className="songPanelYear">rok wydania</div>
+                    <div className="songPanelListen">Listen on:</div>
+                    <ButtonWithImage
+                        cssClasses={["songScreenBtn mediumBtn spotifyBtn"]}
+                        value='Spotify'
+                        onClick={(e) => {
+                            return;
+                        }}
+                        svgName='spotify.svg'
+                    />
+
+                    <ButtonWithImage
+                        cssClasses={["songScreenBtn mediumBtn lyricsBtn"]}
+                        value='Show lyrics'
+                        onClick={(e) => {
+                            return;
+                        }}
+                        svgName='genius.svg'
+                    />
+                </div>
+                <div className="navbar">
+                    <NavBar></NavBar>
+                </div>
             </div>
-            {location.state.tracklist && location.state.tracklist.map((song: PlaylistSong, index: number) => {
-                return (
-                    <div key={index}>
-                        <div>{location.state.tracklist[index].songName}</div>
-                        <div>{location.state.tracklist[index].songArtist}</div>
-                        <div>{location.state.tracklist[index].songDuration}</div>
-                    </div>
-                )
-            })
-            }
-          <div className="navbar">
-                <NavBar></NavBar>
+        )
+    } else {
+        return (
+
+            <div className="main albumPanelWrapper">
+                <div className="albumPanelTopWrapper"
+                     style={{background: `linear-gradient(0deg, rgba(35, 25, 50, 0.9) 0%, rgba(35, 25, 50, 0) 100%), url("` + (location.state.art || "src/components/icons/svg/placeholder.svg") + `")`}}>
+                    <div className="albumPanelTitle">{location.state.mainTitle}</div>
+                    <div className="albumPanelAuthor">{location.state.secondaryTitle}</div>
+                </div>
+                {location.state.tracklist && location.state.tracklist.map((song: PlaylistSong, index: number) => {
+                    return (
+                        <div key={index}>
+                            <AlbumSongCard
+                                number={index}
+                                imgUrl={location.state.art}
+                                author={location.state.tracklist[index].songArtist}
+                                title={location.state.tracklist[index].songName}
+                            />
+                        </div>
+                    )
+                })
+                }
+                <div className="spaceHolder" style={{height: 75}}/>
+                <div className="navbar">
+                    <NavBar></NavBar>
+                </div>
             </div>
-        </div>
-      )
+        )
+    }
 }
 
 export default SongPanel

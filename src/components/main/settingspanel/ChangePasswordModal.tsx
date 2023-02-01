@@ -1,48 +1,27 @@
 import React from 'react'
 import Button from '../../generic/Button'
 import Input from '../../generic/Input'
+import {getAuth, sendPasswordResetEmail} from "firebase/auth";
+import {app, firestore} from "../../firebase/firebase_config"
 
-function ChangePasswordModal({toggleModal}) {
 
-    const [currentPassword, setCurrentPassword] = React.useState('');
-    const [newPassword, setNewPassword] = React.useState('');
-    const [reEnterPassword, setReEnterPassword] = React.useState('');
-
-    function changePassword(e: any) {
-        // TODO PODPIAC POD BAZE DANYCH
-        e.preventDefault()
-        console.log(e.target)
-        if(!checkIfNewPasswordsMatch(reEnterPassword, newPassword)) {
-            console.log("Passwords don't match", reEnterPassword, newPassword);
-            return;
-        }
-    }
-
-    function checkIfNewPasswordsMatch(inputNewPassword: string, newPassword: string) {
-        // TODO PODPIAC POD BAZE DANYCH
-        if (newPassword ===  inputNewPassword) {
-            return true
-        } else {
-            return false
-        }
+function ChangePasswordModal({toggleModal} : {toggleModal:any}) {
+    const auth = getAuth(app);
+    const [email, setEmail] = React.useState('');
+    async function changePassword(e: any, email: string) {
+        e.preventDefault();
+        await sendPasswordResetEmail(auth, email);
+        console.log("Password reset email sent")
     }
   return (
     <div className="settingsModal">
         <div className="modalWrapper changePasswordModal">
             <div className="modalTitle">Change password</div>
-            <form onSubmit={(e) => {changePassword(e)}}>
-                <div>Enter current password:</div>
-                <Input placeHolderText='current password' cssClasses={['modal_input']}
-                 onChangeFunction={(e) => {setCurrentPassword(e.target.value)}}
+            <form onSubmit={(e) => {changePassword(e, email)}}>
+                <div>Enter e-mail address:</div>
+                <Input placeHolderText='e-mail address' cssClasses={['modal_input']}
+                 onChangeFunction={(e) => {setEmail(e.target.value)}}
                  ></Input>
-                <div>Enter new password</div>
-                <Input placeHolderText='new password' cssClasses={['modal_input']}
-                 onChangeFunction={(e) => {setNewPassword(e.target.value)}}
-                 ></Input>
-                <div>Re-enter new password</div>
-                <Input placeHolderText='new password' cssClasses={['modal_input']}
-                onChangeFunction={(e) => {setReEnterPassword(e.target.value)}}
-                ></Input>
                 <Button cssClasses={["settingsScreenBtn mediumBtn confirmBtn"]} text='Confirm' type="submit"/>
                 <Button cssClasses={["settingsScreenBtn mediumBtn cancelBtn"]} text='Cancel' type="button" onClick={toggleModal}/>
             </form>
