@@ -92,3 +92,62 @@ export async function getGenreAlbums(genre: string) {
   return searchResult;
 
 }
+
+export async function getAlbumTracks(albumId: string) {
+  const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
+  const searchParameters: any = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${encodedToken}`
+    }
+  }
+
+  const searchResult = await fetch(`https://api.spotify.com/v1/albums/${albumId}/tracks?market=PL&limit=50`, searchParameters)
+  .then((result) => result.json())
+  .then((data) => {
+    return data;
+  })
+  return searchResult;
+
+
+}
+
+export async function getAlbum(albumId: string) {
+  const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
+  const searchParameters: any = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${encodedToken}`
+    }
+  }
+
+  const searchResult = await fetch(`https://api.spotify.com/v1/albums/${albumId}?market=PL`, searchParameters)
+  .then((result) => result.json())
+  .then((data) => {
+    return data;
+  })
+  return searchResult;
+
+}
+
+export async function getPlaylist(playlistId: string) {
+  const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
+  const searchParameters: any = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${encodedToken}`
+    }
+  }
+
+  const searchResult = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}?market=PL`, searchParameters)
+  .then((result) => result.json())
+  .then((data) => {
+    return data;
+  })
+  return searchResult;
+
+
+}

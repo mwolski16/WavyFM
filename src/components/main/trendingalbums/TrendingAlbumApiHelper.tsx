@@ -51,4 +51,11 @@ export class TrendingAlbumApiHelper  {
         return this.items[index].tracks.href;
     }
 
+    public getAlbumId(index: number) {
+        if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+        return this.items[index].id;
+    }
+
 } 

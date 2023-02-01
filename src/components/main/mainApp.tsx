@@ -23,11 +23,10 @@ function MainApp() {
     let genresArray = items.slice(2,7).map((item: any) => {
       return item.name;
   });
-  console.log(genresArray);
 
     return genresArray;
   }
-
+  // @Konrad dodac zeby ostanti album bylo widac (powiekszyc troche diva)
     return ( 
       <div className="main">
         <div className="navbar">
