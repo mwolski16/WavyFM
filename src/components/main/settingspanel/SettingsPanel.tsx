@@ -12,14 +12,32 @@ import "../mainApp.scss"
 import LogoutModal from './LogoutModal'
 import DisableAccountModal from './DisableAccountModal'
 import SettingsGear from "./SettingsGear";
+import {app, db_fire} from "../../firebase/firebase_config";
+import {getAuth} from "firebase/auth";
 
 function SettingsPanel() {
 
     const [changeUsername, setChangeUsername] = useState(false);
     const [changePassword, setChangePassword] = useState(false);
-    const [changeEmail, setChangeEmail] = useState(false);
     const [logout, setLogout] = useState(false);
     const [disableAccount, setDisableAccount] = useState(false);
+    const [usernameGet, setUsernameGet] = useState('');
+    const [emailGet, setEmailGet] = useState('');
+
+    const auth = getAuth(app);
+    const user = auth.currentUser;
+    async function getUsernameAndEmail() {
+        const collection = db_fire.collection("users_details");
+        collection.get().then((snapshot) => {
+            snapshot.forEach(element => {
+                if(element.data().email == user?.email) {
+                    setUsernameGet(element.data().username);
+                    setEmailGet(element.data().email);
+                }
+            })
+        })
+    }
+        const callFunction = getUsernameAndEmail();
 
   return (
     <div className="main">
@@ -27,9 +45,6 @@ function SettingsPanel() {
             <div>
                 <div className={changePassword ? "" : "disabled"}>
                     <ChangePasswordModal toggleModal={() => {setChangePassword(!changePassword)}}></ChangePasswordModal>
-                </div>
-                <div className={changeEmail ? "" : "disabled"}>
-                    <ChangeEmailModal toggleModal={() => {setChangeEmail(!changeEmail)}}></ChangeEmailModal>
                 </div>
                 <div className={changeUsername ? "" : "disabled"}>
                     <ChangeUsernameModal toggleModal={() => {setChangeUsername(!changeUsername)}}></ChangeUsernameModal>
@@ -46,7 +61,7 @@ function SettingsPanel() {
                 <div className="settingsPanelProfileWrapper">
                     <ProfilePicture imgSize="45px"></ProfilePicture>
                     <div className="settingsPanelViewProfileWrapper">
-                        <span className="settingsPanelUsername">[username]</span>
+                        <span className="settingsPanelUsername">{usernameGet}</span>
                         <span className="settingsPanelView">View profile</span>
                     </div>
                 </div>
@@ -54,17 +69,16 @@ function SettingsPanel() {
                 <div className="settingsPanelProfileDetailsWrapper">
                     <div className="settingsPanelProfileInfo">
                         <span className="profileInfoTitle">E-mail:</span>
-                        <span>[e-mail]</span>
+                        <span>{emailGet}</span>
                     </div>
                     <div className="settingsPanelProfileInfo">
                         <span className="profileInfoTitle">Username:</span>
-                        <span>[username]</span>
+                        <span>{usernameGet}</span>
                     </div>
                 </div>
                 <div className="vectorLine"/>
                 <div className="settingsPanelManageAccountWrapper">
                     <Button type="button" text="Reset Password" cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]} onClick={() => {setChangePassword(!changePassword)}}></Button>
-                    <Button type="button" text="Change e-mail" cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]} onClick={() => {setChangeEmail(!changeEmail)}}></Button>
                     <Button type="button" text="Change username" cssClasses={["settingsScreenBtn mediumBtn settingsBtn"]} onClick={() => {setChangeUsername(!changeUsername)}}></Button>
                 </div>
                 <div className="settingsPanelManageAccountWrapper">

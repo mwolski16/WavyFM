@@ -18,6 +18,7 @@ body {
     display: flex; 
     align-items: center;
     flex-direction: column;
+    z-index: 1;
 
     h1 {
         font-family: $ubuntu;
@@ -39,7 +40,7 @@ body {
 }
 
 .register_bottomWrapper {
-    margin-top: 90px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
 
@@ -83,19 +84,19 @@ body {
 $ubuntu: 'Ubuntu', sans-serif;
 $registerInputWidth: 242px;
 $registerInputHeight: 46px;
-$registerInputTextColor: rgba(165, 165, 165, 1);
+$registerInputTextColor: rgb(234, 234, 234);
 $registerInputSize: 24px;
 $registerBorderColor: rgba(9, 215, 202, 0.8);
 
 .register_input {
     font-family: $ubuntu;
     color: $registerInputTextColor;
-    font-size: $registerInputSize;
+    font-size: 18px;
+    line-height: 21px;
     width: $registerInputWidth;
     height: $registerInputHeight;
     background: transparent;
     border: none;
     text-align: center;
-    border: none;
     border-bottom: 2px solid $registerBorderColor;
 }
