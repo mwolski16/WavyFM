@@ -4,7 +4,7 @@ import GenrePanel from './genrepanel/GenrePanel';
 import './mainApp.scss';
 import NewReleases from './newreleases/NewReleases';
 
-import TrendingAlbums from './trendingalbums/TrendingAlbums';
+import TrendingPlaylists from './trendingplaylists/TrendingPlaylists';
 
 import mockGenres from '../mockGenres.json';
 import ButtonWithImage from '../generic/ButtonWithImage';
@@ -39,7 +39,7 @@ function MainApp() {
         <div className="headerInfo">
             <span>Welcome, [name]</span>
         </div>
-        <TrendingAlbums></TrendingAlbums>
+        <TrendingPlaylists></TrendingPlaylists>
         <NewReleases></NewReleases>
         {getGenres(mockGenres).map((genre: string, index: number) => {
           return <GenrePanel key={index} genre={genre}></GenrePanel>

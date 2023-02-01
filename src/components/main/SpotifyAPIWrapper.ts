@@ -35,7 +35,7 @@ export async function searchSpotify(query: string) {
     return searchResult;
 }
 
-export async function getTrendingAlbums() {
+export async function getTrendingPlaylists() {
   const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
   const searchParameters: any = {
     method: 'GET',

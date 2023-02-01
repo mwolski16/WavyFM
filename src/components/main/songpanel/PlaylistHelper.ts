@@ -41,11 +41,11 @@ export class PlaylistHelper  {
      }
 
      public getTrackDuration(index: number) {
-        if(this.checkIfItemsIsNull()) {
+        if(this.checkIfItemsIsNull() || !this.getTrackNames()) {
             return null;
         }
         let durationArray = [];
-        for (let i = 0; i < this.getTrackNames().length; i++) {
+        for (let i = 0; i < this.getTrackNames()!.length; i++) {
             let minuteDuration = convertMStoMinutes(this.items.tracks.items[i].duration_ms);
             durationArray.push(minuteDuration);
         }

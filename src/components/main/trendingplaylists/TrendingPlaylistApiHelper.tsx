@@ -1,4 +1,4 @@
-export class TrendingAlbumApiHelper  {
+export class TrendingPlaylistApiHelper  {
 
     private items: any;
 
@@ -51,11 +51,18 @@ export class TrendingAlbumApiHelper  {
         return this.items[index].tracks.href;
     }
 
-    public getAlbumId(index: number) {
+    public getPlaylistId(index: number) {
         if(this.checkIfItemsIsNull()) {
             return null;
         }
         return this.items[index].id;
+    }
+
+    public getPlaylistOwner(index: number) {
+        if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+        return this.items[index].owner.display_name;
     }
 
 } 

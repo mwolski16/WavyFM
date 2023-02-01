@@ -21,9 +21,7 @@ function SearchPanel() {
 
   async function searchFunction(e: any) {
     e.preventDefault();
-    console.log(search);
     setSearchResults(await getDataFromApi(search, queryType));
-    console.log(searchResults);
   }
 
   //This should be async
