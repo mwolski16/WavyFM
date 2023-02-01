@@ -73,7 +73,7 @@ export async function getNewReleases() {
 
 }
 
-export async function getGenreAlbums(genre: string) {
+export async function getGenrePlaylists(genre: string) {
   
   const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
   const searchParameters: any = {

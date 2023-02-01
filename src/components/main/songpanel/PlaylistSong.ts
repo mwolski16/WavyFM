@@ -1,6 +1,6 @@
 import { convertMStoMinutes } from "../GeneralHelper";
 
-export class Song {
+export class PlaylistSong {
 
     private song: any;
     private songName: string = ''
@@ -16,6 +16,7 @@ export class Song {
     }
 
     setSongName(): void {
+        //console.log(this.song)
         this.songName = this.song.track.name;
     }
     

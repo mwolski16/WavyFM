@@ -18,7 +18,7 @@ export class GenrePanelApiHelper  {
     }
 
 
-    public getPlaylistImage(index: number): string | null{
+    public getAlbumImage(index: number): string | null{
         if(this.checkIfItemsIsNull()) {
             return null;
         }
@@ -29,6 +29,13 @@ export class GenrePanelApiHelper  {
             image = this.items[index].images[0].url;
         }
         return image;
+    }
+
+    public getAlbumId(index: number) {
+        if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+        return this.items[index].id;
     }
 
     public getAlbumName(index: number) {

@@ -6,7 +6,7 @@ import { getPlaylist, getTrendingPlaylists as getTrendingPlaylists } from '../Sp
 import { TrendingPlaylistApiHelper as TrendingPlaylistApiHelper } from './TrendingPlaylistApiHelper';
 import { useNavigate } from 'react-router-dom';
 import { getAlbumTracks } from '../SpotifyAPIWrapper';
-import { Song } from '../songpanel/Song';
+import { PlaylistSong } from '../songpanel/PlaylistSong';
 
 function TrendingAlbums() {
   
@@ -36,14 +36,15 @@ function TrendingAlbums() {
 
    async function albumClick(e: any, index: number, playlistCoverUrl: string) {
       e.preventDefault();
-      let playlistTracks: Song[] = [];
+      let playlistTracks: PlaylistSong[] = [];
       let playlistName: string = '';
       let playlistOwner: string = '';
       getPlaylist(playlistsId[index]).then((playlist: any) => {
         playlistName = playlist.name
         playlistOwner = playlist.owner.display_name;
+        console.log(playlist)
         playlist.tracks.items.map((track: any) => {
-          playlistTracks.push(new Song(track));
+          playlistTracks.push(new PlaylistSong(track));
         })
         //console.log({mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks})
         navigator({
