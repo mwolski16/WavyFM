@@ -49,7 +49,6 @@ function GenrePanel({genre}: GenrePanelProps) {
         playlist.tracks.items.map((track: any) => {
           playlistTracks.push(new PlaylistSong(track));
         })
-        //console.log({mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks})
         navigator({
           pathname: "/music",
           search: `?code=${playlistId[index]}`,

@@ -16,7 +16,6 @@ export class AlbumSong {
     }
 
     setSongName(): void {
-        //console.log(this.song)
         this.songName = this.song.name;
     }
     

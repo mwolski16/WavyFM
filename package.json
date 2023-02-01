@@ -9,13 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^9.16.0",
     "json-loader": "^0.5.7",
     "module-alias": "^2.2.2",
     "pocketbase": "^0.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.7.0",
-    "sass": "^1.57.1"
+    "realm-web": "^2.0.0",
+    "sass": "^1.57.1",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

@@ -42,11 +42,9 @@ function TrendingAlbums() {
       getPlaylist(playlistsId[index]).then((playlist: any) => {
         playlistName = playlist.name
         playlistOwner = playlist.owner.display_name;
-        console.log(playlist)
         playlist.tracks.items.map((track: any) => {
           playlistTracks.push(new PlaylistSong(track));
         })
-        //console.log({mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks})
         navigator({
           pathname: "/music",
           search: `?code=${playlistsId[index]}`,

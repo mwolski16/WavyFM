@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import NavBar from '../../generic/NavBar';
 import '../mainApp.scss'
 import { getAlbum, getPlaylist } from '../SpotifyAPIWrapper';
@@ -14,12 +14,14 @@ interface SongPanelProps {
   mainTitle: string,
   secondaryTitle: string,
   art: string,
+  releaseYear?: string,
   tracklist?: PlaylistSong[] | AlbumSong[],
 
 }
 
-function SongPanel({mainTitle, secondaryTitle, art, tracklist}: SongPanelProps) {
+function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist}: SongPanelProps) {
     const location = useLocation();
+    const navigator = useNavigate();
 
     if (!location.state.tracklist) {
         return (
@@ -28,7 +30,7 @@ function SongPanel({mainTitle, secondaryTitle, art, tracklist}: SongPanelProps) 
                     <img src={location.state.art || "src/components/icons/svg/placeholder.svg"} className="songImage"/>
                     <div className="songPanelTitle">{location.state.mainTitle}</div>
                     <div className="songPanelAuthor">{location.state.secondaryTitle}</div>
-                    <div className="songPanelYear">rok wydania</div>
+                    <div className="songPanelYear">{location.state.releaseYear}</div>
                     <div className="songPanelListen">Listen on:</div>
                     <ButtonWithImage
                         cssClasses={["songScreenBtn mediumBtn spotifyBtn"]}
@@ -64,10 +66,15 @@ function SongPanel({mainTitle, secondaryTitle, art, tracklist}: SongPanelProps) 
                 </div>
                 {location.state.tracklist && location.state.tracklist.map((song: PlaylistSong, index: number) => {
                     return (
-                        <div key={index}>
+                        <div key={index} onClick={(e) => {
+                          navigator({
+                            pathname: "/music",
+                            search: `?code=${song.getSongName}`,
+                          }, {state: {mainTitle:location.state.tracklist[index].songName, secondaryTitle:location.state.tracklist[index].songArtist, art: location.state.art}}) 
+                        }}>
                             <AlbumSongCard
                                 number={index}
-                                imgUrl={location.state.art}
+                                imgUrl={location.state.tracklist[index].songImageUrl || location.state.art || "src/components/icons/svg/placeholder.svg"}
                                 author={location.state.tracklist[index].songArtist}
                                 title={location.state.tracklist[index].songName}
                             />

@@ -4,7 +4,6 @@ export class SearchResultSong  {
     private type: string = 'song';
 
    public constructor(searchResult: any) {
-        console.log(searchResult);
         this.items = searchResult.tracks.items;
     }
     private checkIfItemsIsNull() {
@@ -53,4 +52,11 @@ export class SearchResultSong  {
          }
          return artistsArray.join(', ');
      }
-} 
+
+     public getSongReleaseYear(index: number) {
+         if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+        return this.getSong(index).album.release_date.split('-')[0];
+    } 
+}

@@ -40,7 +40,6 @@ function NewReleases() {
       getAlbum(albumsId[index]).then((album: any) => {
         albumName = album.name
         albumCreator = album.artists[0].name;
-        console.log(album);
         album.tracks.items.map((track: any) => {
           albumTracks.push(new AlbumSong(track));
         })

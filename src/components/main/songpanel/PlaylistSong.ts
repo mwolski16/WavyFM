@@ -6,6 +6,8 @@ export class PlaylistSong {
     private songName: string = ''
     private songDuration: string = '';
     private songArtist: string = '';
+    private songImageUrl: string = '';
+    private songImageUrlForAlbum = '';
 
     //pass "items" array from search result
     constructor(items: any) {
@@ -13,10 +15,11 @@ export class PlaylistSong {
         this.setSongName();
         this.setSongDuration();
         this.setSongArtist();
+        this.setSongImageUrl();
+        this.setSongImageUrlForAlbum();
     }
 
     setSongName(): void {
-        //console.log(this.song)
         this.songName = this.song.track.name;
     }
     
@@ -30,6 +33,23 @@ export class PlaylistSong {
             artistsArray.push(this.song.track.artists[i].name);
         }
         this.songArtist = artistsArray.join(", ");
+    }
+
+    setSongImageUrl(): void {
+        if(this.song.track.album.images.length === 0) {
+            this.songImageUrl = '/img/defaultImg.png';
+        } else {
+            this.songImageUrl = this.song.track.album.images[0].url;
+        }
+    }
+
+    setSongImageUrlForAlbum(): void {
+        
+        if(this.song.track.album.images.length === 0) {
+            this.songImageUrlForAlbum = '/img/defaultImg.png';
+        } else {
+            this.songImageUrlForAlbum = this.song.track.album.images[0].url;
+        }
     }
 
     public getSongName(): string {

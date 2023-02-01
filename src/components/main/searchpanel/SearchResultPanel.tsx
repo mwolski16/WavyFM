@@ -8,13 +8,15 @@ interface SearchResultPanelProps {
     albumName?: string | null,
     playlistName?: string | null,
     pictureURL?: string | null,
+    releaseYear?: string | null,
     type: string,
 }
 
-function SearchResultPanel({name: artistName, songName, albumName, playlistName, pictureURL, type}: SearchResultPanelProps) {
+function SearchResultPanel({name: artistName, songName: songName, albumName: albumName, playlistName: playlistName, pictureURL: pictureURL, releaseYear: releaseYear, type: type}: SearchResultPanelProps) {
 
     let mainTitle: any;
     let secondaryTitle: any;
+
 
     if(type === 'song') {
         mainTitle = songName;
@@ -38,7 +40,7 @@ function SearchResultPanel({name: artistName, songName, albumName, playlistName,
         navigate({
             pathname: "/music",
             search: `?code=${mainTitle}_${secondaryTitle}`,
-          }, {state: {mainTitle, secondaryTitle, pictureURL, type}});
+          }, {state: {mainTitle: mainTitle, secondaryTitle: secondaryTitle, art: pictureURL, releaseYear: releaseYear}});
     }}>
         <img src={pictureURL ? pictureURL : ""} style={{width: "40px"}}></img>
         <div>

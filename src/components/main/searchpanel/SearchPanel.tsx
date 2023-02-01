@@ -53,8 +53,9 @@ function SearchPanel() {
       let songName = searchResults.getSongName(index);
       let artistName = searchResults.getSongArtistName(index);
       let pictureURL = searchResults.getSongImage(index);
+      let releaseYear = searchResults.getSongReleaseYear(index);
       
-      return (<SearchResultPanel songName={songName} name={artistName} pictureURL={pictureURL} type='song' key={index}/>)
+      return (<SearchResultPanel songName={songName} name={artistName} pictureURL={pictureURL} type='song' key={index} releaseYear={releaseYear}/>)
 
     } else if (searchResults instanceof SearchResultAlbum) {
 
