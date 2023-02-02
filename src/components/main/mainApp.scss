@@ -42,6 +42,7 @@ $mainBackgroundColor: #17131C;
             font-size: 28px;
             line-height: 38px;
             margin-top: 18px;
+            text-align: center;
         }
 
         .songPanelAuthor {
@@ -332,12 +333,16 @@ $mainBackgroundColor: #17131C;
 }
 
 .genres_main {
-    height: 21.75%;
-
+    height: 18.75%;
     margin-top: 29px;
     margin-left: 23px;
+    margin-right: 23px;
     display: flex;
     flex-direction: column;
+}
+
+.genres_sectionWrapper {
+    height: fit-content;
 }
 
 .genres_text {
@@ -347,6 +352,23 @@ $mainBackgroundColor: #17131C;
     color: rgba(255, 255, 255, 0.9);
     font-family: 'Ubuntu', sans-serif;
     font-style: normal;
+    font-weight: 500;
+}
+
+.buttonWithImage {
+    background: inherit;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+    margin-left: 10px;
+}
+
+.adminButtonWrapper {
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
 }
 
 .genres_coverScroll {
@@ -369,6 +391,16 @@ $mainBackgroundColor: #17131C;
     width: 110px;
     border-radius: 6px;
     border: 2px solid rgba(83, 55, 194, 0.4);
+}
+
+.genres_coverTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 5px;
+    width: 90%;
 }
 
 .genres_coverGradient {
@@ -483,8 +515,10 @@ $mainBackgroundColor: #17131C;
     line-height: 23px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-top: 29px;
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 .panelHeader {
@@ -500,6 +534,12 @@ $mainBackgroundColor: #17131C;
     margin-top: 45px;
 }
 
+.modalLabel {
+    width: 75%;
+    font-size: 18px !important;
+    text-align: center;
+    margin-bottom: 10px;
+}
 .libraryPanel {
     .libraryPanelHeaderWrapper {
         display: flex;

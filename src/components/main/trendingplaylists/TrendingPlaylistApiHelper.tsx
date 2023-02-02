@@ -44,6 +44,22 @@ export class TrendingPlaylistApiHelper  {
         return this.items[index].name;
     }
 
+    public getPlaylistNameAndImage(index: number) {
+        if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+        let image;
+        let name;
+        if(this.items[index].images.length === 0) {
+            image = '/img/defaultImg.png'
+        } else {
+            image = this.items[index].images[0].url;
+        }
+        name = this.items[index].name;
+
+        return [image, name];
+    }
+
     public getSongList(index: number) {
         if(this.checkIfItemsIsNull()) {
             return null;

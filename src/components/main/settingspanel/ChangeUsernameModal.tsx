@@ -37,8 +37,8 @@ function ChangeUsernameModal({toggleModal}: any) {
         collection.get().then((snapshot) => {
             snapshot.forEach(element => {
                 if(element.data().email == user?.email) {
-                    const washingtonRef = doc(firestore, "users_details", element.id);
-                    updateDoc(washingtonRef, {
+                    const docRef = doc(firestore, "users_details", element.id);
+                    updateDoc(docRef, {
                     username: newUsername
                     })
                     setAlert("Username changed!");

@@ -13,6 +13,7 @@ function TrendingAlbums() {
   const navigator = useNavigate();
   const [trendingPlaylistArt, setTrendingPlaylistArt] = useState<string[]>([]);
   const [playlistsId, setPlaylistsId] = useState<string[]>([]);
+  const [playlistNameAndArt, setPlaylistNameAndArt] = useState<string[]>([]);
 
 
   useEffect(() => {
@@ -25,13 +26,16 @@ function TrendingAlbums() {
       const trendingPlaylistsObject = new TrendingPlaylistApiHelper(trendingPlaylists);
       let playlistArtArray: any[] = [];
       let playlistIdArray: any[] = [];
-     
+      let playlistNameAndArtArray: any[] = [];
+
       await trendingPlaylistsObject.getItems().map((element: any, index: number) => {
         playlistIdArray.push(trendingPlaylistsObject.getPlaylistId(index));
         playlistArtArray.push(trendingPlaylistsObject.getPlaylistImage(index));
+        playlistNameAndArtArray.push(trendingPlaylistsObject.getPlaylistNameAndImage(index));
     })
       setTrendingPlaylistArt(playlistArtArray);
       setPlaylistsId(playlistIdArray);
+      setPlaylistNameAndArt(playlistNameAndArtArray);
     }
 
    async function albumClick(e: any, index: number, playlistCoverUrl: string) {
@@ -56,10 +60,16 @@ function TrendingAlbums() {
     <div className='genres_main'>
         <div className='genres_text'>Trending</div>
         <div className='genres_coverScroll'>
-            {trendingPlaylistArt?.map((playlistCoverUrl: string, index: number) => {
-                return (<div key={index} className='genres_coverGradient' onClick={(e) => {albumClick(e, index, playlistCoverUrl)}}>
-                  <img className='genres_cover' key={index} src={playlistCoverUrl} alt='Playlist cover'></img>
-                  </div>
+            {playlistNameAndArt?.map((data: string, index: number) => {
+                return (
+                    <div>
+                        <div key={index}  className='genres_coverGradient' onClick={(e) => {albumClick(e, index, data[0])}}>
+                            <img className='genres_cover' key={index} src={data[0]} alt='Playlist cover'></img>
+                       </div>
+                        <div className='genres_coverTitle'>
+                            {data[1]}
+                        </div>
+                    </div>
             )})}
         </div>
        

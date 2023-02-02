@@ -1,3 +1,5 @@
+import {getDisplayElements} from "./admin/adminConfig";
+
 export async function getSpotifyAPIToken() {
     const authParameters = {
         method: 'POST',
@@ -36,6 +38,7 @@ export async function searchSpotify(query: string) {
 }
 
 export async function getTrendingPlaylists() {
+  let numToDisplay = await getDisplayElements();
   const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
   const searchParameters: any = {
     method: 'GET',
@@ -45,7 +48,7 @@ export async function getTrendingPlaylists() {
     }
   }
 
-  const searchResult = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=PL&locale=pl_PL&limit=10', searchParameters)
+  const searchResult = await fetch('https://api.spotify.com/v1/browse/featured-playlists?country=PL&locale=pl_PL&limit='+numToDisplay, searchParameters)
   .then((result) => result.json())
   .then((data) => {
     return data;
@@ -54,6 +57,7 @@ export async function getTrendingPlaylists() {
 }
 
 export async function getNewReleases() {
+  let numToDisplay = await getDisplayElements();
 
   const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
   const searchParameters: any = {
@@ -64,7 +68,7 @@ export async function getNewReleases() {
     }
   }
 
-  const searchResult = await fetch('https://api.spotify.com/v1/browse/new-releases?country=PL&limit=10', searchParameters)
+  const searchResult = await fetch('https://api.spotify.com/v1/browse/new-releases?country=PL&limit='+numToDisplay, searchParameters)
   .then((result) => result.json())
   .then((data) => {
     return data;
@@ -74,7 +78,7 @@ export async function getNewReleases() {
 }
 
 export async function getGenrePlaylists(genre: string) {
-  
+  let numToDisplay = await getDisplayElements();
   const encodedToken = encodeURIComponent(import.meta.env.VITE_SPOTIFY_ACCESS_TOKEN);
   const searchParameters: any = {
     method: 'GET',
@@ -84,7 +88,7 @@ export async function getGenrePlaylists(genre: string) {
     }
   }
 
-  const searchResult = await fetch(`https://api.spotify.com/v1/browse/categories/${genre.toLowerCase()}/playlists?country=PL&limit=10`, searchParameters)
+  const searchResult = await fetch(`https://api.spotify.com/v1/browse/categories/${genre.toLowerCase()}/playlists?country=PL&limit=`+numToDisplay, searchParameters)
   .then((result) => result.json())
   .then((data) => {
     return data;
@@ -123,7 +127,7 @@ export async function getAlbum(albumId: string) {
     }
   }
 
-  const searchResult = await fetch(`https://api.spotify.com/v1/albums/${albumId}?market=PL`, searchParameters)
+  const searchResult = await fetch(`https://api.spotify.com/v1/albums/${albumId}?market=PL&limit=5&&offset=5`, searchParameters)
   .then((result) => result.json())
   .then((data) => {
     return data;
@@ -142,7 +146,7 @@ export async function getPlaylist(playlistId: string) {
     }
   }
 
-  const searchResult = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}?market=PL`, searchParameters)
+  const searchResult = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}?market=PL&limit=5&&offset=5`, searchParameters)
   .then((result) => result.json())
   .then((data) => {
     return data;

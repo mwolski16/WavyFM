@@ -11,6 +11,7 @@ function NewReleases() {
   const navigator = useNavigate();
 
   const [newReleasesAlbumArt, setNewReleasesAlbumArt] = useState<string[]>([]);
+  const [newReleasesAlbumNameAndArt, setnewReleasesAlbumNameAndArtt] = useState<string[]>([]);
   const [albumsId, setAlbumsId] = useState<string[]>([]);
 
   useEffect(() => {
@@ -23,13 +24,16 @@ function NewReleases() {
       const newReleasesAlbumsArray = new NewReleasesApiHelper(newReleasesAlbums);
       let albumArtArray: any[] = [];
       let albumIdArray: any[] = [];
+      let albumNameAndArtArray: any[] = [];
 
       await newReleasesAlbumsArray.getItems().map((element: any, index: number) => {
         albumArtArray.push(newReleasesAlbumsArray.getAlbumImage(index));
         albumIdArray.push(newReleasesAlbumsArray.getAlbumId(index));
+        albumNameAndArtArray.push(newReleasesAlbumsArray.getPlaylistNameAndImage(index));
       })
       setNewReleasesAlbumArt(albumArtArray);
       setAlbumsId(albumIdArray);
+      setnewReleasesAlbumNameAndArtt(albumNameAndArtArray);
     }
 
     async function albumClick(e: any, index: number, albumCoverUrl: string) {
@@ -53,9 +57,17 @@ function NewReleases() {
     <div className='genres_main'>
     <div className='genres_text'>New Releases</div>
     <div className='genres_coverScroll'>
-        {newReleasesAlbumArt?.map((albumCoverUrl: string, index: number) => {
-          return <div key={index} className='genres_coverGradient' onClick={(e) => {albumClick(e, index, albumCoverUrl)}}><img className='genres_cover' key={index} src={albumCoverUrl}></img></div>
-        })}
+          {newReleasesAlbumNameAndArt?.map((data: string, index: number) => {
+            return (
+                <div>
+                  <div key={index}  className='genres_coverGradient' onClick={(e) => {albumClick(e, index, data[0])}}>
+                    <img className='genres_cover' key={index} src={data[0]} alt='Playlist cover'></img>
+                  </div>
+                  <div className='genres_coverTitle'>
+                    {data[1]}
+                  </div>
+                </div>
+            )})}
     </div>
    
 </div>
