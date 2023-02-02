@@ -7,8 +7,9 @@ import SettingsPanel from './components/main/settingspanel/SettingsPanel'
 import SongPanel from './components/main/songpanel/SongPanel'
 import Register from './components/register/Register'
 import MainApp from "./components/main/mainApp";
-import Login from "./components/login/login";
 import Reset from "./components/reset/Reset";
+import Login from "./components/login/login";
+import Welcome from "./components/welcome/Welcome";
 
 function App() {
  
@@ -16,11 +17,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Register/>}/>
+          <Route path="/" element={<Welcome/>}/>
+          <Route path="/register" element={<Register/>}/>
           <Route path="/reset" element={<Reset/>}/>
           <Route path="/main" element={<MainApp/>}/>
           <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
           <Route path="/settings" element={<SettingsPanel/>}/>
           <Route path="/search" element={<SearchPanel/>}/>
           <Route path="/library" element={<LibraryPanel/>}/>

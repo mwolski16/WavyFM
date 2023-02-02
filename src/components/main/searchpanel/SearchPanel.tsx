@@ -105,11 +105,14 @@ function SearchPanel() {
                 </div>
               </div>
             </div>
+          <div className="searchResultsWrapper">
             {searchResults?.getItems().length !== 0 ? searchResults?.getItems().map((element: any, index: number) => {
               return createSearchResultPanel(element, index);
             })
             : <div className="searchResult"></div>
-}
+            }
+          </div>
+          <div className="spaceHolder" style={{height:75}}/>
             <div className="navbar">
                 <NavBar></NavBar>
             </div>
