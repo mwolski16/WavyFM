@@ -52,14 +52,9 @@ function TrendingAlbums() {
       })
       }
 
-
-        
-  
-    
- 
   return (
     <div className='genres_main'>
-        <div className='genre5s_text'>Trending</div>
+        <div className='genres_text'>Trending</div>
         <div className='genres_coverScroll'>
             {trendingPlaylistArt?.map((playlistCoverUrl: string, index: number) => {
                 return (<div key={index} className='genres_coverGradient' onClick={(e) => {albumClick(e, index, playlistCoverUrl)}}>

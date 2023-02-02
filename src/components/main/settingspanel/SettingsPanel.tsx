@@ -87,7 +87,7 @@ function SettingsPanel() {
                 </div>
                 <div className="settingsPanelAppVersionWrapper">
                     <span>App version</span>
-                    <span>[appVersion]</span>
+                    <span>v0.1.1</span>
                 </div>
             </div>
             <div className="navbar">

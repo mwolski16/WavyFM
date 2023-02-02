@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcome_div {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 1;
+
+    .bigBtn.loginBtn {
+        margin-top: 20px;
+    }
+
+    .topWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        img {
+            margin-top: 40px;
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    .buttosnWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        button {
+            margin-bottom: 30px;
+        }
+    }
+
+    h1 {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 400;
+        font-size: 46px;
+        line-height: 53px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        letter-spacing: 0.2em;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+}
+
+.welcome_blur{
+    width: 100%;
+    height: 100%;
+}
+
+.welcome_backgroundImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-image: url('/img/loginBackground.png');
+    filter: blur(16px);
+    transform: scale(1.1);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-position: center;
+    background-repeat: no-repeat;
+}

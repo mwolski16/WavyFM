@@ -89,6 +89,7 @@ $mainBackgroundColor: #17131C;
         font-family: 'Open Sans', sans-serif;
         padding-left: 20px;
         padding-bottom: 11px;
+        background-size: cover;
 
         .albumPanelTitle{
             font-weight: 700;
@@ -273,7 +274,50 @@ $mainBackgroundColor: #17131C;
         }
     }
 }
+.searchPanel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+    .searchResultsWrapper {
+        margin-top: 35px;
+
+        .searchSingleResultWrapper {
+            display: flex;
+            align-items: center;
+            height: 45px;
+            width: 320px;
+            background: rgba(66, 44, 87, 0.2);
+            border-radius: 6px;
+            margin-top: 15px;
+
+            .searchSingleDetailsWrapper {
+                margin-left: 15px;
+
+                .searchSingleCardTitle, .searchSingleCardAuthor {
+                    width: 170px;
+                    font-family: 'Ubuntu', sans-serif;
+                    font-weight: 400;
+                    font-size: 13px;
+                    line-height: 15px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    letter-spacing: 0.06rem;
+                }
+
+                .searchSingleCardAuthor {
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+            }
+        }
+    }
+
+}
 .main {
     height: 100%;
     max-width:100%; 

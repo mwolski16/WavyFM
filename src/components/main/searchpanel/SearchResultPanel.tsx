@@ -34,18 +34,17 @@ function SearchResultPanel({name: artistName, songName: songName, albumName: alb
 
     const navigate = useNavigate();
 
-    // @Konrad - usun ten inline style i dodaj klase do scss
   return (
-    <div onClick={(e) => {
+    <div className="searchSingleResultWrapper" onClick={(e) => {
         navigate({
             pathname: "/music",
             search: `?code=${mainTitle}_${secondaryTitle}`,
           }, {state: {mainTitle: mainTitle, secondaryTitle: secondaryTitle, art: pictureURL, releaseYear: releaseYear}});
     }}>
         <img src={pictureURL ? pictureURL : ""} style={{width: "40px"}}></img>
-        <div>
-            <div>{mainTitle ? mainTitle : ""}</div>
-            <div>{secondaryTitle ? secondaryTitle : ""}</div>
+        <div className="searchSingleDetailsWrapper">
+            <div className="searchSingleCardTitle">{mainTitle ? mainTitle : ""}</div>
+            <div className="searchSingleCardAuthor">{secondaryTitle ? secondaryTitle : ""}</div>
         </div>
     </div>
   )

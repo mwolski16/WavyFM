@@ -202,7 +202,7 @@
       font-weight: 300;
       font-size: 18px;
       line-height: 21px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       color: rgba(255, 255, 255, 0.9);
       opacity: 0.7;
       width: 240px;
@@ -230,6 +230,16 @@
         line-height: 23px;
         color: rgba(255, 255, 255, 0.9);
         opacity: 0.8;
+
+        &.alert {
+            height: 16px;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 16px;
+            color: #d30e0e;
+            margin-bottom: 15px;
+            margin-top: 0;
+        }
       }
     }
   }

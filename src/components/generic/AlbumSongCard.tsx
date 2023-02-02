@@ -5,12 +5,13 @@ interface InputProps {
     imgUrl?: string,
     title?: string,
     author?: string
+    onClick?: (e: any) => void
 }
 
-export default function AlbumSongCard({ number, imgUrl, title, author} : InputProps) {
+export default function AlbumSongCard({ number, imgUrl, title, author, onClick} : InputProps) {
 
     return (
-        <div className="albumSongCardWrapper">
+        <div className="albumSongCardWrapper" onClick={onClick}>
             <div className="albumSongCardNumber">
                 {number}
             </div>
