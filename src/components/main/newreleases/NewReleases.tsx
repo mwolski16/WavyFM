@@ -50,7 +50,7 @@ function NewReleases() {
         navigator({
           pathname: "/music",
           search: `?code=${albumsId[index]}`,
-        }, {state: {mainTitle: albumName, secondaryTitle: albumCreator, art: albumCoverUrl, tracklist: albumTracks}})
+        }, {state: {mainTitle: albumName, secondaryTitle: albumCreator, art: albumCoverUrl, tracklist: albumTracks, elementType:'album', elementId: albumsId[index]}})
       })
       }
   return (

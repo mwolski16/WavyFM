@@ -13,7 +13,7 @@ export default function AlbumSongCard({ number, imgUrl, title, author, onClick} 
     return (
         <div className="albumSongCardWrapper" onClick={onClick}>
             <div className="albumSongCardNumber">
-                {number}
+                {number!+1}
             </div>
             <img src={imgUrl}/>
             <div className="albumSongCardDetailsWrapper">

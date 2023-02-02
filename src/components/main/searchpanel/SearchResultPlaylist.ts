@@ -49,4 +49,11 @@ export class SearchResultPlaylist  {
         }
         return this.getPlaylist(index).owner.display_name;
     }
+
+    public getPlaylistId(index: number) {
+        if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+        return this.getPlaylist(index).id;
+    }
 }

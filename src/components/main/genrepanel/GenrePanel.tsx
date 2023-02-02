@@ -56,7 +56,7 @@ function GenrePanel({genre}: GenrePanelProps) {
         navigator({
           pathname: "/music",
           search: `?code=${playlistId[index]}`,
-        }, {state: {mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks}})
+        }, {state: {mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks, elementType:'playlist', elementId: playlistId[index]}})
       })
       }
   return (

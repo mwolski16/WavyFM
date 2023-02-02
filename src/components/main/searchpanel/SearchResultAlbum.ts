@@ -61,4 +61,11 @@ export class SearchResultAlbum  {
          }
          return artistsArray.join(', ');
      }
+
+     public getAlbumId(index: number) {
+        if(this.checkIfItemsIsNull()) {
+            return null;
+        }
+         return this.getAlbum(index).id;
+     }
 } 

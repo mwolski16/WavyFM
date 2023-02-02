@@ -54,23 +54,28 @@ function SearchPanel() {
       let artistName = searchResults.getSongArtistName(index);
       let pictureURL = searchResults.getSongImage(index);
       let releaseYear = searchResults.getSongReleaseYear(index);
+      let songId = searchResults.getSongId(index);
+      let songPictureURL = searchResults.getSongImage(index);
       
-      return (<SearchResultPanel songName={songName} name={artistName} pictureURL={pictureURL} type='song' key={index} releaseYear={releaseYear}/>)
+      return (<SearchResultPanel songName={songName} name={artistName} pictureURL={pictureURL} type='song' key={index} releaseYear={releaseYear} elementId={songId} songImageUrl={songPictureURL}/>)
 
     } else if (searchResults instanceof SearchResultAlbum) {
 
       let albumName = searchResults.getAlbumName(index);
       let artistName = searchResults.getAlbumArtistName(index);
       let pictureURL = searchResults.getAlbumImage(index);
+      let albumId = searchResults.getAlbumId(index);
+      let albumPictureURL = searchResults.getAlbumImage(index);
 
-      return (<SearchResultPanel albumName={albumName} name={artistName} pictureURL={pictureURL} type='album' key={index}/>)
+      return (<SearchResultPanel albumName={albumName} name={artistName} pictureURL={pictureURL} type='album' key={index} elementId={albumId} songImageUrl={albumPictureURL}/>)
 
     } else if (searchResults instanceof SearchResultPlaylist) {
 
       let playlistName = searchResults.getPlaylistName(index);
       let pictureURL = searchResults.getPlaylistImage(index);
+      let playlistId = searchResults.getPlaylistId(index);
 
-      return (<SearchResultPanel playlistName={playlistName} pictureURL={pictureURL} type='playlist' key={index}/>)
+      return (<SearchResultPanel playlistName={playlistName} pictureURL={pictureURL} type='playlist' key={index} elementId={playlistId}/>)
     }
   }
 

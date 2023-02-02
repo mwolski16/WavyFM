@@ -59,4 +59,11 @@ export class SearchResultSong  {
         }
         return this.getSong(index).album.release_date.split('-')[0];
     } 
+
+    public getSongId(index: number) {
+            if(this.checkIfItemsIsNull()) {
+                return null;
+            }
+            return this.getSong(index).id;
+        }
 }

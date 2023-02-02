@@ -43,6 +43,7 @@ function TrendingAlbums() {
       let playlistTracks: PlaylistSong[] = [];
       let playlistName: string = '';
       let playlistOwner: string = '';
+      let playlistSongArt: string = '';
       getPlaylist(playlistsId[index]).then((playlist: any) => {
         playlistName = playlist.name
         playlistOwner = playlist.owner.display_name;
@@ -52,7 +53,7 @@ function TrendingAlbums() {
         navigator({
           pathname: "/music",
           search: `?code=${playlistsId[index]}`,
-        }, {state: {mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks}})
+        }, {state: {mainTitle: playlistName, secondaryTitle: playlistOwner, art: playlistCoverUrl, tracklist: playlistTracks, elementType:'playlist', elementId: playlistsId[index]}})
       })
       }
 

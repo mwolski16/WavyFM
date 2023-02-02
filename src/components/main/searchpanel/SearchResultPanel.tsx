@@ -9,13 +9,16 @@ interface SearchResultPanelProps {
     playlistName?: string | null,
     pictureURL?: string | null,
     releaseYear?: string | null,
-    type: string,
+    type: 'playlist' | 'song' | 'album' | 'artist';
+    elementId?: string | null,
+    songImageUrl?: string;
 }
 
-function SearchResultPanel({name: artistName, songName: songName, albumName: albumName, playlistName: playlistName, pictureURL: pictureURL, releaseYear: releaseYear, type: type}: SearchResultPanelProps) {
+function SearchResultPanel({name: artistName, songName: songName, albumName: albumName, playlistName: playlistName, pictureURL: pictureURL, releaseYear: releaseYear, type: type, elementId, songImageUrl}: SearchResultPanelProps) {
 
     let mainTitle: any;
     let secondaryTitle: any;
+    let state;
 
 
     if(type === 'song') {
@@ -39,7 +42,7 @@ function SearchResultPanel({name: artistName, songName: songName, albumName: alb
         navigate({
             pathname: "/music",
             search: `?code=${mainTitle}_${secondaryTitle}`,
-          }, {state: {mainTitle: mainTitle, secondaryTitle: secondaryTitle, art: pictureURL, releaseYear: releaseYear}});
+          }, {state: {mainTitle: mainTitle, secondaryTitle: secondaryTitle, art: pictureURL, releaseYear: releaseYear, elementId: elementId, elementType: type, songImageUrl: songImageUrl}});
     }}>
         <img src={pictureURL ? pictureURL : ""} style={{width: "40px"}}></img>
         <div className="searchSingleDetailsWrapper">

@@ -16,10 +16,13 @@ interface SongPanelProps {
   art: string,
   releaseYear?: string,
   tracklist?: PlaylistSong[] | AlbumSong[],
+  elementType: 'album' | 'playlist' | 'song';
+  elementId: string;
+  songImageUrl?: string;
 
 }
 
-function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist}: SongPanelProps) {
+function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist, elementType, elementId, songImageUrl}: SongPanelProps) {
     const location = useLocation();
     const navigator = useNavigate();
 
@@ -27,7 +30,7 @@ function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist}: Son
         return (
             <div className="main songPanelWrapper">
                 <div className="songPanelDetailsWrapper">
-                    <img src={location.state.art || "src/components/icons/svg/placeholder.svg"} className="songImage"/>
+                    <img src={location.state.songImageUrl || "src/components/icons/svg/placeholder.svg"} className="songImage"/>
                     <div className="songPanelTitle">{location.state.mainTitle}</div>
                     <div className="songPanelAuthor">{location.state.secondaryTitle}</div>
                     <div className="songPanelYear">{location.state.releaseYear}</div>
@@ -36,7 +39,7 @@ function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist}: Son
                         cssClasses={["songScreenBtn mediumBtn spotifyBtn"]}
                         value='Spotify'
                         onClick={(e) => {
-                            return;
+                            window.open('https://open.spotify.com/search/'+location.state.mainTitle, "_blank");
                         }}
                         svgName='spotify.svg'
                     />
@@ -65,12 +68,13 @@ function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist}: Son
                     <div className="albumPanelAuthor">{location.state.secondaryTitle}</div>
                 </div>
                 {location.state.tracklist && location.state.tracklist.map((song: PlaylistSong, index: number) => {
+                    let state = {mainTitle:location.state.tracklist[index].songName, secondaryTitle:location.state.tracklist[index].songArtist, art: location.state.tracklist[index].songImageUrl, songImageUrl: location.state.tracklist[index].songImageUrl};
                     return (
                         <div key={index} onClick={(e) => {
                           navigator({
                             pathname: "/music",
                             search: `?code=${song.getSongName}`,
-                          }, {state: {mainTitle:location.state.tracklist[index].songName, secondaryTitle:location.state.tracklist[index].songArtist, art: location.state.art}}) 
+                          }, {state: state}) 
                         }}>
                             <AlbumSongCard
                                 number={index}

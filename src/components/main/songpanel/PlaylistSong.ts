@@ -63,4 +63,8 @@ export class PlaylistSong {
         return this.songArtist;
     }
 
+    public getSongImageUrl(): string {
+        return this.songImageUrl;
+    }
+
 }
