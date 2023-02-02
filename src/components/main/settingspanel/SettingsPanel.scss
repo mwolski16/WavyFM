@@ -196,6 +196,23 @@
       margin-right: auto;
     }
 
+    &.adminModal {
+      width: 320px;
+      height: 320px;
+      margin-left: auto;
+      margin-right: auto;
+
+      #admin_select {
+        width: 160px;
+
+        option {
+          background: #17131C;
+          font-size: 14px;
+        }
+      }
+
+    }
+
     .modal_input {
       font-family: 'Ubuntu', sans-serif;
       font-style: normal;

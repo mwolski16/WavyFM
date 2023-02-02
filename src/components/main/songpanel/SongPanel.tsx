@@ -45,7 +45,7 @@ function SongPanel({mainTitle, secondaryTitle, art, releaseYear, tracklist}: Son
                         cssClasses={["songScreenBtn mediumBtn lyricsBtn"]}
                         value='Show lyrics'
                         onClick={(e) => {
-                            return;
+                            window.open("https://genius.com/search?q="+location.state.secondaryTitle+" "+location.state.mainTitle, "_blank")
                         }}
                         svgName='genius.svg'
                     />

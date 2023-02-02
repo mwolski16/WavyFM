@@ -17,6 +17,7 @@ function GenrePanel({genre}: GenrePanelProps) {
 
   const [genrePlaylistArt, setGenrePlaylistArt] = useState<string[]>([]);
   const [playlistId, setPlaylistId] = useState<string[]>([]);
+  const [playlistNameAndArt, setPlaylistNameAndArt] = useState<string[]>([]);
 
   useEffect(() => {
     getGenreAlbumInfo();
@@ -28,13 +29,16 @@ function GenrePanel({genre}: GenrePanelProps) {
       const genrePlaylistsArray = new GenrePanelApiHelper(genrePlaylists);
       let albumArtArray: any[] = [];
       let albumIdArray: any[] = [];
+      let albumNameAndArtArray: any[] = [];
 
       await genrePlaylistsArray.getItems().map((element: any, index: number) => {
         albumArtArray.push(genrePlaylistsArray.getAlbumImage(index));
         albumIdArray.push(genrePlaylistsArray.getAlbumId(index));
+        albumNameAndArtArray.push(genrePlaylistsArray.getPlaylistNameAndImage(index));
       })
       setGenrePlaylistArt(albumArtArray);
       setPlaylistId(albumIdArray);
+      setPlaylistNameAndArt(albumNameAndArtArray);
     }
 
     async function albumClick(e: any, index: number, playlistCoverUrl: string) {
@@ -59,8 +63,17 @@ function GenrePanel({genre}: GenrePanelProps) {
     <div className='genres_main'>
     <div className='genres_text'>{genre}</div>
     <div className='genres_coverScroll'>
-        {genrePlaylistArt?.map((albumCoverUrl: string, index: number) => {
-          return <div key={index} className='genres_coverGradient' onClick={(e) => {albumClick(e, index, albumCoverUrl)}}><img className='genres_cover' key={index} src={albumCoverUrl}></img></div>
+        {playlistNameAndArt?.map((data: string, index: number) => {
+          return (
+              <div className="genres_sectionWrapper">
+                <div key={index}  className='genres_coverGradient' onClick={(e) => {albumClick(e, index, data[0])}}>
+                  <img className='genres_cover' key={index} src={data[0]} alt='Playlist cover'></img>
+                </div>
+                <div className='genres_coverTitle'>
+                  {data[1]}
+                </div>
+              </div>
+          )
         })}
     </div>
    

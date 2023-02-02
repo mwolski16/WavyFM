@@ -37,7 +37,7 @@ function SettingsPanel() {
             })
         })
     }
-        const callFunction = getUsernameAndEmail();
+    getUsernameAndEmail();
 
   return (
     <div className="main">
